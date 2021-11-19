@@ -55,6 +55,12 @@ type AplicaOperacion struct {
 
 // Tipo de dato Go que representa un solo nodo (réplica) de raft
 //
+
+type Operacion struct {
+	mandato int
+	operacion interface{}
+}
+
 type NodoRaft struct {
 	mux   sync.Mutex       // Mutex para proteger acceso a estado compartido
 
@@ -66,8 +72,18 @@ type NodoRaft struct {
 
 
 	// Vuestros datos aqui.
-	
 	// mirar figura 2 para descripción del estado que debe mantenre un nodo Raft
+
+	currentTerm int // mandato actual
+	votedFor int	// id del nodo al que votó en el mandato actual, nulo si no votó
+	log []Operacion // registro de entradas
+
+	commitIndex int // indice de la ultima operacion comprometida que conozcamos
+	lastApplied int // indice de la ultima operacion que hemos aplicado a la máquina de estados
+
+	// Estado del líder
+	nextIndex []int  // indice del siguiente registro de entradas a mandar
+	matchIndex []int // indice del mayor registro de entradas conocido para ser replicado
 }
 
 
@@ -116,7 +132,55 @@ func NuevoNodo(nodos []*rpc.Client, yo int, canalAplicar chan AplicaOperacion)
 	}
 
 	// Your initialization code here (2A, 2B)
+	
+	// Necesaria una elección inicial
 
+	/* 
+	go routine
+	for infinito
+	switch ESTADO {
+	case SEGUIDOR:
+		select 
+		{
+		case <- mensajeRecibido:
+			reinicias el timeout -> valor aleatorio
+		case <- timeout:
+			pasamos CANDIDATO
+		}
+	case CANDIDATO:
+		mandato++
+		realizamos la eleccion
+		select {
+		case <- nodo con mandato mayor:
+			pasamos a SEGUIDOR
+		case <- mayoría:
+			pasamos a LIDER
+		case <- timeout
+			seguimos en CANDIDATO
+		}
+	case LIDER:
+		20 veces por segundo
+		mandamos latido a todos los seguidores
+		si descubrimos un nodo con mayor mandato -> pasamos a SEGUIDOR
+	}
+	*/ 
+
+	/*
+	PROCESO DE ELECCION
+	tenemos canal respuestas
+	por cada nodo de la eleccion
+		go func() {
+			rpc.voto
+			canal respuestas <- respuesta recibida
+		}
+	
+	esperamos en canal respuestas
+	select case, canal + timeout
+	*/
+
+	/*
+	LATIDO similar al proceso de eleccion
+	*/
 	return nr
 }
 
@@ -184,7 +248,11 @@ func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
 // Nombres de campos deben comenzar con letra mayuscula !
 //
 type ArgsPeticionVoto struct {
-	// Vuestros datos aqui
+	// Argumentos
+	Term int // mandato del candidato
+	CandidateId int // id del candidato
+	lastLogIndex int // indice de la última entrada del registro del candidato
+	lastLogTerm int // mandato de la última entrada del registro del candidato
 }
 
 //
@@ -199,7 +267,8 @@ type ArgsPeticionVoto struct {
 //
 //
 type RespuestaPeticionVoto struct {
-	// Vuestros datos aqui
+	Term int // Mandato actual
+	VoteGranted bool // True si le concede el voto al candidato, false si no
 }
 
 //
@@ -217,7 +286,7 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 //
 // nodo int -- indice del servidor destino en nr.nodos[]
 //
-// args *RequestVoteArgs -- argumetnos par la llamada RPC
+// args *RequestVoteArgs -- argumentos par la llamada RPC
 //
 // reply *RequestVoteReply -- respuesta RPC
 //
