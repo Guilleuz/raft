@@ -87,6 +87,38 @@ type NodoRaft struct {
 	canalStop     chan bool
 }
 
+func (nr *NodoRaft) gestionEstado() {
+	for {
+		select {
+		case <-nr.canalStop:
+			return
+		default:
+			nr.mux.Lock()
+			estadoActual := nr.estado
+			nr.mux.Unlock()
+			switch estadoActual {
+			case SEGUIDOR:
+				// Definimos un timeout aleatorio entre 150 y 300 ms
+				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
+				select {
+				case <-nr.mensajeLatido:
+					// Seguimos en seguidor, se reinicia el timeout
+				case <-timeout:
+					// Timeout expirado, pasamos a candidato
+					nr.mux.Lock()
+					nr.estado = CANDIDATO
+					nr.mux.Unlock()
+				}
+			case CANDIDATO:
+				nr.eleccion()
+			case LIDER:
+				// latido 20 veces por segundo
+				nr.AppendEntries(50 * time.Millisecond)
+			}
+		}
+	}
+}
+
 func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoRaft {
 	nr := &NodoRaft{}
 	nr.nodos = nodos
@@ -120,39 +152,25 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 		nr.logger = log.New(ioutil.Discard, "", 0)
 	}
 
-	go func() {
-		rand.Seed(time.Now().UnixNano())
-		for {
-			select {
-			case <-nr.canalStop:
-				return
-			default:
-				nr.mux.Lock()
-				estadoActual := nr.estado
-				nr.mux.Unlock()
-				switch estadoActual {
-				case SEGUIDOR:
-					// Definimos un timeout aleatorio entre 150 y 300 ms
-					timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
-					select {
-					case <-nr.mensajeLatido:
-						// Seguimos en seguidor, se reinicia el timeout
-					case <-timeout:
-						// Timeout expirado, pasamos a candidato
-						nr.mux.Lock()
-						nr.estado = CANDIDATO
-						nr.mux.Unlock()
-					}
-				case CANDIDATO:
-					nr.eleccion()
-				case LIDER:
-					// latido 20 veces por segundo
-					nr.AppendEntries(50 * time.Millisecond)
-				}
-			}
-		}
-	}()
+	// Elección inicial
+	// timeout aleatorio
+	// select
+	//		recibo mensaje -> empiezo como seguidor
+	//		vence timeout -> empiezo como candidato
+	rand.Seed(time.Now().UnixNano())
+	timeoutInicial := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
+	select {
+	case <-nr.mensajeLatido:
+		nr.mux.Lock()
+		nr.estado = SEGUIDOR
+		nr.mux.Unlock()
+	case <-timeoutInicial:
+		nr.mux.Lock()
+		nr.estado = CANDIDATO
+		nr.mux.Unlock()
+	}
 
+	go nr.gestionEstado()
 	return nr
 }
 
@@ -246,11 +264,18 @@ func (nr *NodoRaft) ObtenerEstado() (int, int, bool) {
 }
 
 func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
-	indice := -1
-	mandato := -1
-	EsLider := true
+	nr.mux.Lock()
+	indice := len(nr.log)
+	mandato := nr.currentTerm
+	EsLider := nr.estado == LIDER
+	nr.mux.Unlock()
 
-	// Vuestro codigo aqui
+	if EsLider {
+		nr.mux.Lock()
+		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
+		go nr.AppendEntries(50 * time.Millisecond)
+		nr.mux.Unlock()
+	}
 
 	return indice, mandato, EsLider
 }
