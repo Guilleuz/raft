@@ -88,9 +88,11 @@ type NodoRaft struct {
 }
 
 func (nr *NodoRaft) gestionEstado() {
+	nr.logger.Printf("Réplica %d: comienza la ejecución\n", nr.yo)
 	for {
 		select {
 		case <-nr.canalStop:
+			nr.logger.Printf("Réplica %d: finaliza la ejecución\n", nr.yo)
 			return
 		default:
 			nr.mux.Lock()
@@ -113,7 +115,8 @@ func (nr *NodoRaft) gestionEstado() {
 				nr.eleccion()
 			case LIDER:
 				// latido 20 veces por segundo
-				nr.AppendEntries(50 * time.Millisecond)
+				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n", nr.yo, nr.currentTerm)
+				nr.AppendEntries([]Operacion{}, 50*time.Millisecond)
 			}
 		}
 	}
@@ -157,6 +160,7 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	// select
 	//		recibo mensaje -> empiezo como seguidor
 	//		vence timeout -> empiezo como candidato
+	// Poner en una función
 	rand.Seed(time.Now().UnixNano())
 	timeoutInicial := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
 	select {
@@ -175,7 +179,6 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 }
 
 func (nr *NodoRaft) eleccion() {
-
 	// Petición de voto
 	var peticion ArgsPeticionVoto
 	nr.mux.Lock()
@@ -183,7 +186,11 @@ func (nr *NodoRaft) eleccion() {
 	peticion.CandidateId = nr.yo
 	peticion.LastLogIndex = len(nr.log) - 1
 	peticion.LastLogTerm = (nr.log[len(nr.log)-1]).Mandato
+	// Incrementamos el mandato
+	nr.currentTerm++
+	peticion.Term = nr.currentTerm
 	nr.mux.Unlock()
+	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
 	// Realizamos elecciones hasta convertirnos en líder o
 	// encontrar un nodo con mandato mayor al nuestro
@@ -193,11 +200,6 @@ func (nr *NodoRaft) eleccion() {
 	votosRecibidos := 1
 	timeout := time.After(50 * time.Millisecond)
 
-	// Incrementamos el mandato
-	nr.mux.Lock()
-	nr.currentTerm++
-	peticion.Term = nr.currentTerm
-	nr.mux.Unlock()
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
 
@@ -230,6 +232,7 @@ func (nr *NodoRaft) eleccion() {
 					nr.matchIndex[i] = 0
 				}
 				nr.mux.Unlock()
+				nr.logger.Printf("Réplica %d: he recibido mayoría, paso a LIDER\n", nr.yo)
 			}
 		}
 	case mandato := <-canalMandato:
@@ -237,10 +240,12 @@ func (nr *NodoRaft) eleccion() {
 		// el nuestro, pasamos a ser seguidor
 		if mandato > nr.currentTerm {
 			nr.mux.Lock()
+			nr.votedFor = -1
 			nr.currentTerm = mandato
 			nr.estado = SEGUIDOR
 			nr.mux.Unlock()
 		}
+		nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
 	case <-timeout:
 		// Si ha expirado el timeout, y no hemos conseguido
 		// la mayoría, ni hemos encontrado a alguien con mayor mandato,
@@ -273,8 +278,9 @@ func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
 	if EsLider {
 		nr.mux.Lock()
 		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
-		go nr.AppendEntries(50 * time.Millisecond)
+		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 50*time.Millisecond)
 		nr.mux.Unlock()
+		nr.logger.Printf("Réplica %d: (lider) recibo una nueva operación, mandato: %d\n", nr.yo, nr.currentTerm)
 	}
 
 	return indice, mandato, EsLider
@@ -299,6 +305,7 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 		nr.votedFor = args.CandidateId
 		nr.currentTerm = args.Term
 		nr.mux.Unlock()
+		nr.logger.Printf("Réplica %d: le concedo el voto al candidato %d\n", nr.yo, args.CandidateId)
 		reply.Term = args.Term
 		reply.VoteGranted = true
 		if nr.estado == SEGUIDOR {
@@ -308,6 +315,7 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 		nr.mux.Unlock()
 		reply.VoteGranted = false
 		reply.Term = nr.currentTerm
+		nr.logger.Printf("Réplica %d: le niego el voto al candidato %d\n", nr.yo, args.CandidateId)
 	}
 }
 
@@ -316,6 +324,7 @@ func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
 	checkError(err)
 	err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", &args, &reply, 25*time.Millisecond)
+	nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
 	return err == nil
 }
 
@@ -352,9 +361,11 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	if nr.currentTerm < args.Term {
 		// Si el mandato es mayor que el mío, paso a seguidor
 		nr.currentTerm = args.Term
+		nr.votedFor = -1
 		nr.estado = SEGUIDOR
 	}
 	nr.mux.Unlock()
+	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n", nr.yo, len(args.Entries), args.LeaderId)
 
 	reply.Term = nr.currentTerm
 	if nr.currentTerm > args.Term || len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
@@ -366,20 +377,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		reply.Success = true
 
 		nr.mux.Lock()
-		for i := 0; i < len(args.Entries); i++ {
-			// Por cada una de las nuevas entradas
-			if args.PrevLogIndex+1+i >= len(nr.log) {
-				// Si el log está vacío en esa posición, añadimos las nuevas entradas restantes
-				nr.log = append(nr.log, args.Entries[i:]...)
-				break
-			} else if nr.log[args.PrevLogIndex+1+i].Mandato != args.Entries[i].Mandato {
-				// Si el log no coincide con la entrada correspondiente,
-				// eliminamos esa entrada y las posteriores, sustituyéndolas por
-				// las nuevas entradas restantes
-				nr.log = append(nr.log[0:args.PrevLogIndex+1+i], args.Entries[i:]...)
-				break
-			}
-		}
+		nr.log = append(nr.log, args.Entries...)
 
 		// Actualizamos nuestro commitIndex
 		if args.LeaderCommit > nr.commitIndex {
@@ -397,46 +395,37 @@ func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
 	checkError(err)
 	err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 25*time.Millisecond)
+	nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n", nr.yo, len(args.Entries), nodo)
 	return err == nil
 }
 
-func (nr *NodoRaft) AppendEntries(timeout time.Duration) {
+func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	// Petición de AppendEntry
 	var peticion AppendEntryPeticion
 	nr.mux.Lock()
 	peticion.Term = nr.currentTerm
 	peticion.LeaderId = nr.yo
 	peticion.LeaderCommit = nr.commitIndex
-
-	// Guardamos los valores de matchIndex y nextIndex que
-	// tendrían las replicas en caso de recibir correctamente
-	// el AppendEntry
-	nuevoNext := len(nr.log)
-	nuevoMatch := len(nr.log) - 1
+	peticion.Entries = entries
+	peticion.PrevLogIndex = len(nr.log) - 1 - len(entries)
+	if peticion.PrevLogIndex < 0 {
+		peticion.PrevLogIndex = 0
+		peticion.PrevLogTerm = 0
+	} else {
+		peticion.PrevLogTerm = nr.log[peticion.PrevLogTerm].Mandato
+	}
 	nr.mux.Unlock()
 
-	type Success struct {
-		bool
-		int
-	}
-
 	timeoutChan := time.After(timeout)
-	canalSuccess := make(chan Success, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
 
 	for i := 0; i < len(nr.nodos); i++ {
 		if i != nr.yo {
 			// Por cada réplica, mandamos una petición de Append Entry
-			nr.mux.Lock()
-			peticion.PrevLogIndex = nr.nextIndex[i] - 1
-			peticion.PrevLogTerm = nr.log[nr.nextIndex[i]-1].Mandato
-			peticion.Entries = nr.log[nr.nextIndex[i]:]
-			nr.mux.Unlock()
 			go func() {
 				var respuesta AppendEntryRespuesta
 				ok := nr.enviarAppendEntry(i, &peticion, &respuesta)
 				if ok {
-					canalSuccess <- Success{respuesta.Success, i}
 					canalMandato <- respuesta.Term
 				}
 			}()
@@ -445,29 +434,16 @@ func (nr *NodoRaft) AppendEntries(timeout time.Duration) {
 
 	select {
 	// Recibimos las respuestas a las peticiones de voto
-	case success := <-canalSuccess:
-		if success.bool {
-			// Si succes es true, actualizamos matchIndex y nextIndex
-			nr.mux.Lock()
-			nr.nextIndex[success.int] = nuevoNext
-			nr.matchIndex[success.int] = nuevoMatch
-			nr.mux.Unlock()
-		} else {
-			// Si success es falso, decrementamos el nextIndex
-			nr.mux.Lock()
-			if nr.nextIndex[success.int] > 1 {
-				nr.nextIndex[success.int]--
-			}
-			nr.mux.Unlock()
-		}
 	case mandato := <-canalMandato:
 		// Si recibimos una respuesta con mayor mandato que
 		// el nuestro, pasamos a ser seguidor
 		if mandato > nr.currentTerm {
 			nr.mux.Lock()
 			nr.currentTerm = mandato
+			nr.votedFor = -1
 			nr.estado = SEGUIDOR
 			nr.mux.Unlock()
+			nr.logger.Printf("Réplica %d: (lider) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
 		}
 	case <-timeoutChan:
 		// Si vence el timeout, dejamos de esperar las respuestas
@@ -475,20 +451,6 @@ func (nr *NodoRaft) AppendEntries(timeout time.Duration) {
 
 	// Actualizamos el commitIndex
 	nr.mux.Lock()
-	for n := nr.commitIndex + 1; n < len(nr.log); n++ {
-		if nr.log[n].Mandato == nr.currentTerm {
-			total := 0
-			for i := 0; i < len(nr.nodos); i++ {
-				if nr.matchIndex[i] >= n {
-					total++
-				}
-			}
-			if total > nr.commitIndex {
-				nr.commitIndex = total
-			} else {
-				break
-			}
-		}
-	}
+	nr.commitIndex += len(entries)
 	nr.mux.Unlock()
 }
