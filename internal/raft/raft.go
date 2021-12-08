@@ -202,12 +202,18 @@ func (nr *NodoRaft) eleccion() {
 
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
+	fmt.Println("Inicio eleccion OK")
 
-	for i := 0; i < len(nr.nodos); i++ {
+	fmt.Printf("Num de nodos %d\n", len(nr.nodos))
+	for i, _ := range nr.nodos {
+		fmt.Printf("Num de nodos %d, i: %d\n", len(nr.nodos), i)
 		if i != nr.yo {
 			// Por cada réplica, mandamos una petición de voto
 			go func() {
+				// Las goroutinas comparten memoria, la variable i cambia antes de ejecutar la peticion
+				// Solucion -> go funcion(int i)
 				var respuesta RespuestaPeticionVoto
+				fmt.Printf("En la gorutina i: %d\n", i)
 				ok := nr.enviarPeticionVoto(i, &peticion, &respuesta)
 				if ok {
 					canalVoto <- respuesta.VoteGranted
@@ -216,6 +222,7 @@ func (nr *NodoRaft) eleccion() {
 			}()
 		}
 	}
+	fmt.Println("Goruotines pedir votos lanzadas")
 
 	select {
 	// Recibimos las respuestas a las peticiones de voto
@@ -251,6 +258,7 @@ func (nr *NodoRaft) eleccion() {
 		// la mayoría, ni hemos encontrado a alguien con mayor mandato,
 		// empezamos una nueva elección
 	}
+	fmt.Println("Eleccion finalizada")
 }
 
 // Metodo Para() utilizado cuando no se necesita mas al nodo
@@ -299,7 +307,7 @@ type RespuestaPeticionVoto struct {
 	VoteGranted bool // True si le concede el voto al candidato, false si no
 }
 
-func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) {
+func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
 	if (nr.votedFor == -1 || nr.votedFor == args.CandidateId) && args.Term >= nr.currentTerm {
 		nr.votedFor = args.CandidateId
@@ -317,14 +325,19 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 		reply.Term = nr.currentTerm
 		nr.logger.Printf("Réplica %d: le niego el voto al candidato %d\n", nr.yo, args.CandidateId)
 	}
+
+	return nil
 }
 
 func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	reply *RespuestaPeticionVoto) bool {
+	fmt.Printf("Envio peticion a %d\n", nodo)
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
-	checkError(err)
-	err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", &args, &reply, 25*time.Millisecond)
-	nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
+	//checkError(err)
+	if err == nil {
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", &args, &reply, 25*time.Millisecond)
+		nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
+	}
 	return err == nil
 }
 
@@ -352,7 +365,7 @@ func min(a, b int) int {
 	return b
 }
 
-func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRespuesta) {
+func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRespuesta) error {
 	if nr.estado == SEGUIDOR {
 		// Reiniciamos el timeout del seguidor
 		nr.mensajeLatido <- true
@@ -385,6 +398,8 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		}
 		nr.mux.Unlock()
 	}
+
+	return nil
 }
 
 // Realiza un AppendEntry a la réplica "nodo"

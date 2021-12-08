@@ -1,64 +1,39 @@
 package main
 
 import (
+	//"errors"
+	//"fmt"
+	//"log"
 	"fmt"
-	"log"
 	"net"
 	"net/rpc"
-	"raft/internal/comun/rpctimeout"
-	"time"
+	"os"
+	"raft/internal/comun/check"
+	"raft/internal/raft"
+	"strconv"
+	//"time"
 )
 
-type Args struct {
-	A, B int
-}
-
-type Arith int
-
-func (t *Arith) Mul(args *Args, reply *int) error {
-	*reply = args.A * args.B
-	return nil
-}
-
 func main() {
-	arith := new(Arith)
+	// obtener entero de indice de este nodo
+	me, err := strconv.Atoi(os.Args[1])
+	check.CheckError(err, "Main, mal numero entero de indice de nodo:")
+
+	var nodos []string
+	// Resto de argumento son los end points como strings
+	// De todas la replicas-> pasarlos a HostPort
+	for i, _ := range os.Args[2:] {
+		nodos = append(nodos, os.Args[i])
+	}
+
 	// Parte Servidor
-	rpc.Register(arith)
+	nr := raft.NuevoNodo(nodos, me, make(chan raft.AplicaOperacion, 1000))
+	rpc.Register(nr)
 
-	l, e := net.Listen("tcp", ":1234")
-	if e != nil {
-		log.Fatal("listen error:", e)
-	}
+	fmt.Println("Replica escucha en :", me, " de ", os.Args[2:])
 
-	// Quitar el lanzamiento de la gorutina, pero no el código interno.
-	// Solo se necesita para esta prueba dado que cliente y servidor estan,
-	// aqui, juntos
-	go func() {
-		for {
-			conn, err := l.Accept()
-			if err != nil {
-				continue
-			}
+	l, err := net.Listen("tcp", os.Args[2:][me])
+	check.CheckError(err, "Main listen error:")
 
-			go rpc.ServeConn(conn)
-		}
-	}()
-
-	time.Sleep(100 * time.Millisecond)
-
-	// Parte Cliente
-	client, err := rpc.Dial("tcp", "127.0.0.1:1234")
-	if err != nil {
-		log.Fatal("dialing:", err)
-	}
-
-	var replay int
-	err = rpctimeout.CallTimeout(client, "Mul", &Args{5, 7}, &replay,
-		5*time.Millisecond)
-
-	if err != nil {
-		log.Fatal("arith error:", err)
-	}
-
-	fmt.Println("Arith: %d*%d=%d", args.A, args.B, reply)
+	rpc.Accept(l)
 }
