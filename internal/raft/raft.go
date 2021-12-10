@@ -39,7 +39,6 @@ func checkError(err error) {
 		_, _, linea, _ := runtime.Caller(1)
 		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
 		fmt.Fprintf(os.Stderr, "Línea: %d\n", linea)
-		os.Exit(1)
 	}
 }
 
@@ -116,7 +115,7 @@ func (nr *NodoRaft) gestionEstado() {
 			case LIDER:
 				// latido 20 veces por segundo
 				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n", nr.yo, nr.currentTerm)
-				nr.AppendEntries([]Operacion{}, 50*time.Millisecond)
+				nr.AppendEntries([]Operacion{}, 200*time.Millisecond)
 			}
 		}
 	}
@@ -125,6 +124,9 @@ func (nr *NodoRaft) gestionEstado() {
 func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoRaft {
 	nr := &NodoRaft{}
 	nr.nodos = nodos
+	for i, nodo := range nodos {
+		fmt.Printf("Nodo %d: %s\n", i, nodo)
+	}
 	nr.yo = yo
 	nr.mux = sync.Mutex{}
 	nr.mensajeLatido = make(chan bool, 100)
@@ -198,31 +200,18 @@ func (nr *NodoRaft) eleccion() {
 	// TODO eliminar el bucle, que se realice con el bucle general
 	// más fácil gestionar cambios de estado no debidos a la eleccion
 	votosRecibidos := 1
-	timeout := time.After(50 * time.Millisecond)
+	timeout := time.After(2000 * time.Millisecond)
 
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
-	fmt.Println("Inicio eleccion OK")
 
-	fmt.Printf("Num de nodos %d\n", len(nr.nodos))
 	for i, _ := range nr.nodos {
-		fmt.Printf("Num de nodos %d, i: %d\n", len(nr.nodos), i)
 		if i != nr.yo {
 			// Por cada réplica, mandamos una petición de voto
-			go func() {
-				// Las goroutinas comparten memoria, la variable i cambia antes de ejecutar la peticion
-				// Solucion -> go funcion(int i)
-				var respuesta RespuestaPeticionVoto
-				fmt.Printf("En la gorutina i: %d\n", i)
-				ok := nr.enviarPeticionVoto(i, &peticion, &respuesta)
-				if ok {
-					canalVoto <- respuesta.VoteGranted
-					canalMandato <- respuesta.Term
-				}
-			}()
+			go nr.gestionarPeticionVoto(i, canalVoto, canalMandato, peticion)
+
 		}
 	}
-	fmt.Println("Goruotines pedir votos lanzadas")
 
 	select {
 	// Recibimos las respuestas a las peticiones de voto
@@ -257,6 +246,7 @@ func (nr *NodoRaft) eleccion() {
 		// Si ha expirado el timeout, y no hemos conseguido
 		// la mayoría, ni hemos encontrado a alguien con mayor mandato,
 		// empezamos una nueva elección
+		nr.logger.Printf("Réplica %d: (candidato) timeout eleccion, mandato: %d\n", nr.yo, nr.currentTerm)
 	}
 	fmt.Println("Eleccion finalizada")
 }
@@ -286,7 +276,7 @@ func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
 	if EsLider {
 		nr.mux.Lock()
 		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
-		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 50*time.Millisecond)
+		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 200*time.Millisecond)
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: (lider) recibo una nueva operación, mandato: %d\n", nr.yo, nr.currentTerm)
 	}
@@ -333,12 +323,29 @@ func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	reply *RespuestaPeticionVoto) bool {
 	fmt.Printf("Envio peticion a %d\n", nodo)
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
-	//checkError(err)
-	if err == nil {
-		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", &args, &reply, 25*time.Millisecond)
+	fmt.Printf("Conexion establecida con %d\n", nodo)
+	checkError(err)
+	if cliente != nil {
+		fmt.Printf("Envio peticion a %d dentro del if\n", nodo)
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", args, reply, 150*time.Millisecond)
+		checkError(err)
 		nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
+	} else {
+		fmt.Println("Cliente es nulo")
 	}
 	return err == nil
+}
+
+func (nr *NodoRaft) gestionarPeticionVoto(nodo int, canalVoto chan bool, canalMandato chan int,
+	args ArgsPeticionVoto) {
+	// Las goroutinas comparten memoria, la variable i cambia antes de ejecutar la peticion
+	// Solucion -> go funcion(int i)
+	var respuesta *RespuestaPeticionVoto = new(RespuestaPeticionVoto)
+	ok := nr.enviarPeticionVoto(nodo, &args, respuesta)
+	if ok {
+		canalVoto <- respuesta.VoteGranted
+		canalMandato <- respuesta.Term
+	}
 }
 
 type AppendEntryPeticion struct {
@@ -409,7 +416,7 @@ func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	reply *AppendEntryRespuesta) bool {
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
 	checkError(err)
-	err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 25*time.Millisecond)
+	err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 2000*time.Millisecond)
 	nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n", nr.yo, len(args.Entries), nodo)
 	return err == nil
 }
@@ -437,13 +444,7 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	for i := 0; i < len(nr.nodos); i++ {
 		if i != nr.yo {
 			// Por cada réplica, mandamos una petición de Append Entry
-			go func() {
-				var respuesta AppendEntryRespuesta
-				ok := nr.enviarAppendEntry(i, &peticion, &respuesta)
-				if ok {
-					canalMandato <- respuesta.Term
-				}
-			}()
+			go nr.gestionarEnvioAppendEntry(i, peticion, canalMandato)
 		}
 	}
 
@@ -468,4 +469,12 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	nr.mux.Lock()
 	nr.commitIndex += len(entries)
 	nr.mux.Unlock()
+}
+
+func (nr *NodoRaft) gestionarEnvioAppendEntry(nodo int, args AppendEntryPeticion, canalMandato chan int) {
+	var respuesta AppendEntryRespuesta
+	ok := nr.enviarAppendEntry(nodo, &args, &respuesta)
+	if ok {
+		canalMandato <- respuesta.Term
+	}
 }
