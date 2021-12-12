@@ -13,6 +13,7 @@ import (
 	"raft/internal/raft"
 	"runtime"
 	"strconv"
+	"time"
 	//"time"
 )
 
@@ -51,5 +52,16 @@ func main() {
 	l, err := net.Listen("tcp", os.Args[2:][me])
 	check.CheckError(err, "Main listen error:")
 
+	go func() {
+		// Probar 3 appendEntries
+		time.Sleep(500 * time.Millisecond)
+		_, _, esLider := nr.ObtenerEstado()
+		fmt.Printf("Replica %d: es el lider", me)
+		if esLider {
+			for i := 0; i < 3; i++ {
+				nr.SometerOperacion("Operacion Prueba" + strconv.Itoa(i))
+			}
+		}
+	}()
 	http.Serve(l, nil)
 }

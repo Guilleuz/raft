@@ -137,7 +137,7 @@ func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
 
 	// Poner en marcha  3 réplicas Raft
 	replicasMaquinas :=
-		map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: 																	MAQUINA3}
+		map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
 	cr.startDistributedProcesses(replicasMaquinas)
 
 

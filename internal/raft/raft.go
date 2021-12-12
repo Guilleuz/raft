@@ -88,6 +88,7 @@ type NodoRaft struct {
 
 func (nr *NodoRaft) gestionEstado() {
 	nr.logger.Printf("Réplica %d: comienza la ejecución\n", nr.yo)
+	rand.Seed(time.Now().UnixNano())
 	for {
 		select {
 		case <-nr.canalStop:
@@ -113,9 +114,9 @@ func (nr *NodoRaft) gestionEstado() {
 			case CANDIDATO:
 				nr.eleccion()
 			case LIDER:
-				// latido 20 veces por segundo
+				// latido 20 veces por segundo (cada 50 ms)
 				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n", nr.yo, nr.currentTerm)
-				nr.AppendEntries([]Operacion{}, 200*time.Millisecond)
+				nr.AppendEntries([]Operacion{}, 50*time.Millisecond)
 			}
 		}
 	}
@@ -133,6 +134,9 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	nr.canalStop = make(chan bool)
 	nr.votedFor = -1
 	nr.log = []Operacion{{0, nil}}
+	nr.estado = SEGUIDOR
+	nr.nextIndex = make([]int, len(nodos))
+	nr.matchIndex = make([]int, len(nodos))
 
 	if kEnableDebugLogs {
 		nombreNodo := nodos[yo]
@@ -157,25 +161,6 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 		nr.logger = log.New(ioutil.Discard, "", 0)
 	}
 
-	// Elección inicial
-	// timeout aleatorio
-	// select
-	//		recibo mensaje -> empiezo como seguidor
-	//		vence timeout -> empiezo como candidato
-	// Poner en una función
-	rand.Seed(time.Now().UnixNano())
-	timeoutInicial := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
-	select {
-	case <-nr.mensajeLatido:
-		nr.mux.Lock()
-		nr.estado = SEGUIDOR
-		nr.mux.Unlock()
-	case <-timeoutInicial:
-		nr.mux.Lock()
-		nr.estado = CANDIDATO
-		nr.mux.Unlock()
-	}
-
 	go nr.gestionEstado()
 	return nr
 }
@@ -194,13 +179,9 @@ func (nr *NodoRaft) eleccion() {
 	nr.mux.Unlock()
 	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
-	// Realizamos elecciones hasta convertirnos en líder o
-	// encontrar un nodo con mandato mayor al nuestro
-
-	// TODO eliminar el bucle, que se realice con el bucle general
-	// más fácil gestionar cambios de estado no debidos a la eleccion
 	votosRecibidos := 1
-	timeout := time.After(2000 * time.Millisecond)
+	// Timeout aleatorio entre 100 y 200 ms
+	timeout := time.After(time.Duration(rand.Intn(101)+100) * time.Millisecond)
 
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
@@ -276,7 +257,7 @@ func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
 	if EsLider {
 		nr.mux.Lock()
 		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
-		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 200*time.Millisecond)
+		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 50*time.Millisecond)
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: (lider) recibo una nueva operación, mandato: %d\n", nr.yo, nr.currentTerm)
 	}
@@ -299,16 +280,17 @@ type RespuestaPeticionVoto struct {
 
 func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
-	if (nr.votedFor == -1 || nr.votedFor == args.CandidateId) && args.Term >= nr.currentTerm {
+	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi mandato: %d, el del candidato: %d\n", nr.yo, args.CandidateId, nr.votedFor, nr.currentTerm, args.Term)
+	if nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm {
 		nr.votedFor = args.CandidateId
 		nr.currentTerm = args.Term
+		nr.estado = SEGUIDOR
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: le concedo el voto al candidato %d\n", nr.yo, args.CandidateId)
 		reply.Term = args.Term
 		reply.VoteGranted = true
-		if nr.estado == SEGUIDOR {
-			nr.mensajeLatido <- true
-		}
+		nr.mensajeLatido <- true
+
 	} else {
 		nr.mux.Unlock()
 		reply.VoteGranted = false
@@ -321,15 +303,13 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 
 func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	reply *RespuestaPeticionVoto) bool {
-	fmt.Printf("Envio peticion a %d\n", nodo)
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
-	fmt.Printf("Conexion establecida con %d\n", nodo)
 	checkError(err)
 	if cliente != nil {
-		fmt.Printf("Envio peticion a %d dentro del if\n", nodo)
-		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", args, reply, 150*time.Millisecond)
-		checkError(err)
 		nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", args, reply, 90*time.Millisecond)
+		cliente.Close()
+		checkError(err)
 	} else {
 		fmt.Println("Cliente es nulo")
 	}
@@ -378,15 +358,24 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		nr.mensajeLatido <- true
 	}
 	nr.mux.Lock()
-	if nr.currentTerm < args.Term {
-		// Si el mandato es mayor que el mío, paso a seguidor
+	if nr.currentTerm < args.Term && nr.estado == CANDIDATO {
+		// Si el mandato es mayor o igual que el mío, paso a seguidor
 		nr.currentTerm = args.Term
 		nr.votedFor = -1
 		nr.estado = SEGUIDOR
+		nr.logger.Printf("Réplica %d: (candidato) AppendEntry de %d rechazado, mi mandato: %d, el suyo: %d\n", nr.yo, args.LeaderId, nr.currentTerm, args.Term)
+		reply.Term = nr.currentTerm
+		reply.Success = false
+		nr.mux.Unlock()
+		return nil
 	}
+
 	nr.mux.Unlock()
 	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n", nr.yo, len(args.Entries), args.LeaderId)
-
+	nr.logger.Printf("Réplica %d: Entires recibido:\n", nr.yo)
+	for _, entry := range args.Entries {
+		nr.logger.Println(entry)
+	}
 	reply.Term = nr.currentTerm
 	if nr.currentTerm > args.Term || len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
 		// Si mi mandato es mayor, o el log no contiene una entrada en PrevLogIndex con el mandato PrevLogTerm
@@ -416,8 +405,12 @@ func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	reply *AppendEntryRespuesta) bool {
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
 	checkError(err)
-	err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 2000*time.Millisecond)
-	nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n", nr.yo, len(args.Entries), nodo)
+	if cliente != nil {
+		nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n", nr.yo, len(args.Entries), nodo)
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 90*time.Millisecond)
+		cliente.Close()
+		checkError(err)
+	}
 	return err == nil
 }
 
