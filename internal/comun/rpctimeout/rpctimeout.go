@@ -27,7 +27,6 @@ func CallTimeout(client *rpc.Client, serviceMethod string, args interface{},
 
 	select {
 	case call := <-done:
-		fmt.Println("Llamada RPC finalizada con exito")
 		return call.Error
 	case <-time.After(timeout):
 		return fmt.Errorf(

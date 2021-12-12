@@ -13,7 +13,6 @@ import (
 	"raft/internal/raft"
 	"runtime"
 	"strconv"
-	"time"
 	//"time"
 )
 
@@ -52,16 +51,32 @@ func main() {
 	l, err := net.Listen("tcp", os.Args[2:][me])
 	check.CheckError(err, "Main listen error:")
 
-	go func() {
+	/*go func() {
 		// Probar 3 appendEntries
 		time.Sleep(500 * time.Millisecond)
-		_, _, esLider := nr.ObtenerEstado()
-		fmt.Printf("Replica %d: es el lider", me)
+		_, _, _, esLider := nr.ObtenerEstado()
 		if esLider {
-			for i := 0; i < 3; i++ {
-				nr.SometerOperacion("Operacion Prueba" + strconv.Itoa(i))
-			}
+			fmt.Printf("Replica %d: es el lider", me)
+			cliente, err := rpc.DialHTTP("tcp", os.Args[2])
+			checkError(err)
+
+			var reply raft.ObtenerEstadoReply
+			err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, &reply)
+			checkError(err)
+			fmt.Printf("Estado: %d, %d, %d, %d", reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
+
+			lider, err := rpc.DialHTTP("tcp", os.Args[2 + reply.LiderId])
+			checkError(err)
+
+			var args interface{} = "Someto por RPC"
+			var replyOP raft.SometerOperacionReply
+			err = lider.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
+			checkError(err)
+			fmt.Printf("Resultados someter: %d, %d, %d\n", replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+
+			err = cliente.Call("NodoRaft.ParaRPC", struct{}{}, struct{}{})
+			checkError(err)
 		}
-	}()
+	}()*/
 	http.Serve(l, nil)
 }
