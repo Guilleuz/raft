@@ -22,8 +22,8 @@ func (nr *NodoRaft) eleccion() {
 	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
 	votosRecibidos := 1
-	// Timeout aleatorio entre 100 y 200 ms
-	timeout := time.After(time.Duration(rand.Intn(101)+100) * time.Millisecond)
+	// Timeout aleatorio entre 300 y 500 ms
+	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
 
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
@@ -86,7 +86,6 @@ type RespuestaPeticionVoto struct {
 	Term        int  // Mandato actual
 	VoteGranted bool // True si le concede el voto al candidato, false si no
 }
-
 
 func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
