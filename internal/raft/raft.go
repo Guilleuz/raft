@@ -19,7 +19,7 @@ import (
 const kEnableDebugLogs = true
 
 // Poner a true para logear a stdout en lugar de a fichero
-const kLogToStdout = true
+const kLogToStdout = false
 
 // Cambiar esto para salida de logs en un directorio diferente
 const kLogOutputDir = "./logs_raft/"
@@ -48,18 +48,17 @@ type AplicaOperacion struct {
 	operacion interface{}
 }
 
-// Tipo de dato Go que representa un solo nodo (réplica) de raft
-//
 
 type Operacion struct {
 	Mandato   int
 	Operacion interface{}
 }
 
+// Tipo de dato Go que representa un solo nodo (réplica) de raft
 type NodoRaft struct {
 	mux sync.Mutex // Mutex para proteger acceso a estado compartido
 
-	nodos []string // Conexiones RPC a todos los nodos (réplicas) Raft
+	nodos []string // IP:Puerto de todas las réplicas
 	yo    int      // this peer's index into peers[]
 	lider int		// id de la replica que cree que es lider
 	// Utilización opcional de este logger para depuración
@@ -85,6 +84,7 @@ type NodoRaft struct {
 	canalStop     chan bool
 }
 
+// Función encargada de la gestión del estado de la réplica
 func (nr *NodoRaft) gestionEstado() {
 	nr.logger.Printf("Réplica %d: comienza la ejecución\n", nr.yo)
 	rand.Seed(time.Now().UnixNano())
@@ -103,7 +103,7 @@ func (nr *NodoRaft) gestionEstado() {
 				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
 				select {
 				case <-nr.mensajeLatido:
-					// Seguimos en seguidor, se reinicia el timeout
+					// Si recibimos un mensaje, se reinicia el timeout
 				case <-timeout:
 					// Timeout expirado, pasamos a candidato
 					nr.mux.Lock()
@@ -111,6 +111,7 @@ func (nr *NodoRaft) gestionEstado() {
 					nr.mux.Unlock()
 				}
 			case CANDIDATO:
+				// Comenzamos una elección
 				nr.eleccion()
 			case LIDER:
 				// latido 20 veces por segundo (cada 50 ms)
@@ -122,6 +123,7 @@ func (nr *NodoRaft) gestionEstado() {
 }
 
 func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoRaft {
+	// Inicializamos el nodo
 	nr := &NodoRaft{}
 	nr.nodos = nodos
 	for i, nodo := range nodos {
@@ -132,7 +134,8 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	nr.mensajeLatido = make(chan bool, 100)
 	nr.canalStop = make(chan bool)
 	nr.votedFor = -1
-	nr.log = []Operacion{{0, nil}}
+	// Inicializamos el log de forma que todas las réplicas tengan una entrada inicial igual
+	nr.log = []Operacion{{0, nil}}	
 	nr.estado = SEGUIDOR
 	nr.nextIndex = make([]int, len(nodos))
 	nr.matchIndex = make([]int, len(nodos))

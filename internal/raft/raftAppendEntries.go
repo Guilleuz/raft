@@ -23,6 +23,7 @@ type AppendEntryRespuesta struct {
 	Success bool // true si contiene una entrada que coincida con PrevLogIndex y PrevLogTerm
 }
 
+// Devuelve el mínimo de a y b
 func min(a, b int) int {
 	if a < b {
 		return a
@@ -30,11 +31,12 @@ func min(a, b int) int {
 	return b
 }
 
+// Llamada RPC AppendEntry, que permite añadir una serie de entradas al log de una réplica
 func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRespuesta) error {
 	nr.mux.Lock()
-	nr.lider = args.LeaderId
 	if nr.currentTerm < args.Term {
-		// Si el mandato es mayor o igual que el mío, lo actualizo y paso a seguidor
+		// Si el mandato es mayor que el mío, lo actualizo y paso a seguidor
+		nr.lider = args.LeaderId
 		nr.currentTerm = args.Term
 		nr.votedFor = -1
 		nr.estado = SEGUIDOR
@@ -57,6 +59,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		reply.Success = true
 
 		nr.mux.Lock()
+		// Actualizamos el log
 		nr.log = append(nr.log, args.Entries...)
 
 		// Actualizamos nuestro commitIndex
@@ -85,8 +88,18 @@ func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	return err == nil
 }
 
+// Función que gestiona una llamada a AppendEntry, enviando por el canal "canalMandato", el mandato de
+// la réplica a la que se envío el AppendEntry
+func (nr *NodoRaft) gestionarEnvioAppendEntry(nodo int, args AppendEntryPeticion, canalMandato chan int) {
+	var respuesta AppendEntryRespuesta
+	ok := nr.enviarAppendEntry(nodo, &args, &respuesta)
+	if ok {
+		canalMandato <- respuesta.Term
+	}
+}
+
 func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
-	// Petición de AppendEntry
+	// Inicializamos la petición de AppendEntry
 	var peticion AppendEntryPeticion
 	nr.mux.Lock()
 	peticion.Term = nr.currentTerm
@@ -113,7 +126,7 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	}
 
 	select {
-	// Recibimos las respuestas a las peticiones de voto
+	// Recibimos las respuestas a las llamadas
 	case mandato := <-canalMandato:
 		// Si recibimos una respuesta con mayor mandato que
 		// el nuestro, pasamos a ser seguidor
@@ -133,12 +146,4 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	nr.mux.Lock()
 	nr.commitIndex += len(entries)
 	nr.mux.Unlock()
-}
-
-func (nr *NodoRaft) gestionarEnvioAppendEntry(nodo int, args AppendEntryPeticion, canalMandato chan int) {
-	var respuesta AppendEntryRespuesta
-	ok := nr.enviarAppendEntry(nodo, &args, &respuesta)
-	if ok {
-		canalMandato <- respuesta.Term
-	}
 }

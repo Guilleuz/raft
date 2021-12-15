@@ -8,7 +8,7 @@ import (
 )
 
 func (nr *NodoRaft) eleccion() {
-	// Petición de voto
+	// Inicialización de la petición de voto
 	var peticion ArgsPeticionVoto
 	nr.mux.Lock()
 	nr.votedFor = nr.yo
@@ -21,7 +21,7 @@ func (nr *NodoRaft) eleccion() {
 	nr.mux.Unlock()
 	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
-	votosRecibidos := 1
+	votosRecibidos := 1 // Nos votamos a nosotros mismos
 	// Timeout aleatorio entre 300 y 500 ms
 	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
 
@@ -87,13 +87,16 @@ type RespuestaPeticionVoto struct {
 	VoteGranted bool // True si le concede el voto al candidato, false si no
 }
 
+// Llamada RPC para pedir el voto a una réplica
 func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
 	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi mandato: %d, el del candidato: %d\n", nr.yo, args.CandidateId, nr.votedFor, nr.currentTerm, args.Term)
 	if nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm {
+		// Si no hemos votado (votedFor = -1), hemos votado al mismo candidato
+		// o el mandato del candidato es mayor, le concedemos el voto
 		nr.votedFor = args.CandidateId
 		nr.currentTerm = args.Term
-		nr.estado = SEGUIDOR
+		nr.estado = SEGUIDOR	// Pasamos a seguidor
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: le concedo el voto al candidato %d\n", nr.yo, args.CandidateId)
 		reply.Term = args.Term
@@ -110,6 +113,9 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 	return nil
 }
 
+// Realiza un PedirVoto a la réplica "nodo"
+// Devuelve true si ha recibido respuesta antes de vencer el timeout
+// Devuelve false en caso contrario
 func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	reply *RespuestaPeticionVoto) bool {
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
@@ -123,10 +129,11 @@ func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	return err == nil
 }
 
+// Función que gestiona una llamada a PedirVoto, enviando por el canal "canalMandato", el mandato de
+// la réplica a la que se le pidió el voto, y por "canalVoto" un booleano indicando si la réplica le
+// ha concedido o no el voto
 func (nr *NodoRaft) gestionarPeticionVoto(nodo int, canalVoto chan bool, canalMandato chan int,
 	args ArgsPeticionVoto) {
-	// Las goroutinas comparten memoria, la variable i cambia antes de ejecutar la peticion
-	// Solucion -> go funcion(int i)
 	var respuesta *RespuestaPeticionVoto = new(RespuestaPeticionVoto)
 	ok := nr.enviarPeticionVoto(nodo, &args, respuesta)
 	if ok {

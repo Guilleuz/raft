@@ -1,0 +1,2 @@
+155.210.154.194:17561 12:44:55.977888 raft.go:162: logger initialized
+155.210.154.194:17561 12:44:55.978041 raft.go:89: Réplica 0: comienza la ejecución

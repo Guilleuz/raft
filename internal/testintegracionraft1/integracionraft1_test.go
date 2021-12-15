@@ -33,7 +33,7 @@ const (
 	//PATH = filepath.Join(os.Getenv("HOME"), "tmp", "P4", "raft")
 
 	// paquete main de ejecutables relativos a PATH previo
-	EXECREPLICA = "./cmd/srvraft/srvraft"
+	EXECREPLICA = "./srvraft"
 
 	// comandos completo a ejecutar en máquinas remota con ssh. Ejemplo :
 	// 				cd $HOME/raft; go run cmd/srvraft/main.go 127.0.0.1:29001
@@ -56,17 +56,19 @@ func checkError(err error) {
 }
 
 // TEST primer rango
-func TestPrimerasPruebas(t *testing.T) { // (m *testing.M) {
-	// <setup code>
+func TestPrimerasPruebas(t *testing.T) {
 	// Crear canal de resultados de ejecuciones ssh en maquinas remotas
 	var cr CanalResultados
 	cr.canal = make(chan string, 2000)
 	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
-	for _, replica := range cr.replicasMaquinas {
-		cr.replicas = append(cr.replicas, replica)
-	}
+	cr.replicas = []string{REPLICA1, REPLICA2, REPLICA3}
 
-	// Run test sequence
+	go func() {
+		for {
+			cadena := <- cr.canal
+			fmt.Printf("CANAL-LOG:%s\n", cadena)
+		}
+	}()
 
 	// Test1 : No debería haber ningun primario, si SV no ha recibido aún latidos
 	t.Run("T1:ArranqueYParada",
@@ -83,10 +85,6 @@ func TestPrimerasPruebas(t *testing.T) { // (m *testing.M) {
 	// Test4: Primer nodo copia
 	t.Run("T4:EscriturasConcurrentes",
 		func(t *testing.T) { cr.tresOperacionesComprometidasEstable(t) })
-
-	// tear down code
-	// eliminar procesos en máquinas remotas
-	cr.stop()
 }
 
 // ---------------------------------------------------------------------
@@ -96,15 +94,6 @@ type CanalResultados struct {
 	canal            chan string
 	replicas         []string
 	replicasMaquinas map[string]string
-}
-
-func (cr *CanalResultados) stop() {
-	/*close(ts.cmdOutput)
-
-	// Leer las salidas obtenidos de los comandos ssh ejecutados
-	for s := range cr {
-		fmt.Println(s)
-	}*/
 }
 
 // start  gestor de vistas; mapa de replicas y maquinas donde ubicarlos;
@@ -123,7 +112,7 @@ func (cr *CanalResultados) startDistributedProcesses(
 			[]string{maquina}, cr.canal, PRIVKEYFILE)
 
 		// dar tiempo para se establezcan las replicas
-		time.Sleep(1000 * time.Millisecond)
+		time.Sleep(10000 * time.Millisecond)
 		numeroReplica++
 	}
 }
@@ -172,7 +161,9 @@ func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
 
 	// Se ha elegido lider ?
 	fmt.Printf("Probando lider en curso\n")
-	cr.pruebaUnLider()
+	if cr.pruebaUnLider() == -1 {
+		t.Errorf("No hay líder, o hay más de uno\n")
+	}
 
 	cr.stopDistributedProcesses(cr.replicas)
 
@@ -194,10 +185,14 @@ func (cr *CanalResultados) FalloAnteriorElegirNuevoLiderTest3(t *testing.T) {
 	// Desconectar lider
 	if lider != -1 {
 		cr.stopDistributedProcesses([]string{cr.replicas[lider]})
+	} else {
+		t.Errorf("No hay líder, o hay más de uno\n")
 	}
 
 	fmt.Printf("Comprobar nuevo lider\n")
-	cr.pruebaUnLider()
+	if cr.pruebaUnLider() == -1 {
+		t.Errorf("No hay un nuevo líder, o hay más de uno\n")
+	}
 
 	// Parar réplicas almacenamiento en remoto
 	cr.stopDistributedProcesses(cr.replicas)
@@ -217,6 +212,9 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 		cliente, err := rpc.DialHTTP("tcp", cr.replicas[lider])
 		checkError(err)
 		// SI cliente nil no superado
+		if cliente == nil {
+			t.Errorf("No se ha podido conectar con el lider\n")
+		}
 
 		var args interface{} = "Someto por RPC"
 		var replyOP raft.SometerOperacionReply
@@ -231,6 +229,11 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 		checkError(err)
 		fmt.Printf("Resultados someter 3: %d, %d, %t\n", replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+		if replyOP.Indice != 3 {
+			t.Errorf("No se han registrado las entradas correctamente\n")
+		}
+	} else {
+		t.Errorf("No hay líder, o hay más de uno\n")
 	}
 
 	// Parar réplicas almacenamiento en remoto
@@ -243,19 +246,20 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 // Comprobar que hay un solo lider
 // probar varias veces si se necesitan reelecciones
 func (cr *CanalResultados) pruebaUnLider() int {
-	var reply raft.ObtenerEstadoReply
 	lider := -1
 	for _, replica := range cr.replicas {
 		cliente, err := rpc.DialHTTP("tcp", replica)
 		checkError(err)
-
-		err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, &reply)
-		checkError(err)
-		fmt.Printf("Estado: %d, %d, %d, %t", reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
-		if reply.EsLider && lider == -1 {
-			lider = reply.Yo
-		} else if reply.EsLider {
-			return -1 // Hay más de un líder
+		reply := new(raft.ObtenerEstadoReply)
+		if cliente != nil {
+			err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, reply)
+			checkError(err)
+			fmt.Printf("Estado Réplica %d: mandato:%d, idLider:%d, esLider:%t\n", reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
+			if reply.EsLider && lider == -1 {
+				lider = reply.Yo
+			} else if reply.EsLider {
+				return -1 // Hay más de un líder
+			}	
 		}
 	}
 
