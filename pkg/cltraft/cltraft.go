@@ -54,14 +54,16 @@ func main() {
 			var reply raft.ObtenerEstadoReply
 			err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, &reply)
 			checkError(err)
-			fmt.Printf("Estado del nodo %d: id:%d, mandato:%d, idLider:%d, esLider:%t\n\n", nodo, reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
+			fmt.Printf("Estado del nodo %d: id:%d, mandato:%d, idLider:%d, esLider:%t\n\n",
+				nodo, reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
 		case 3:
 			// Someter operación al nodo
 			var args interface{} = "Someto por RPC"
 			var replyOP raft.SometerOperacionReply
 			err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 			checkError(err)
-			fmt.Printf("Resultados someter al nodo %d: indice:%d, mandato:%d, esLider:%t\n\n", nodo, replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+			fmt.Printf("Resultados someter al nodo %d: indice:%d, mandato:%d, esLider:%t\n\n",
+				nodo, replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
 		default:
 			fmt.Println("Opción no reconocida\n")
 		}

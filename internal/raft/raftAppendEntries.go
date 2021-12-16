@@ -36,7 +36,6 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	nr.mux.Lock()
 	if nr.currentTerm < args.Term {
 		// Si el mandato es mayor que el mío, lo actualizo y paso a seguidor
-		nr.lider = args.LeaderId
 		nr.currentTerm = args.Term
 		nr.votedFor = -1
 		nr.estado = SEGUIDOR
@@ -49,9 +48,12 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	}
 
 	reply.Term = nr.currentTerm
-	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n", nr.yo, len(args.Entries), args.LeaderId)
-	if nr.currentTerm > args.Term ||  (nr.currentTerm >= args.Term && nr.estado == CANDIDATO) || len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
-		// Si mi mandato es mayor, o el log no contiene una entrada en PrevLogIndex con el mandato PrevLogTerm
+	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n",
+		nr.yo, len(args.Entries), args.LeaderId)
+	if nr.currentTerm > args.Term || (nr.currentTerm >= args.Term && nr.estado == CANDIDATO) ||
+		len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
+		// Si mi mandato es mayor, o el log no contiene una entrada
+		// en PrevLogIndex con el mandato PrevLogTerm
 		// Success será falso
 		reply.Success = false
 	} else {
@@ -61,6 +63,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		nr.mux.Lock()
 		// Actualizamos el log
 		nr.log = append(nr.log, args.Entries...)
+		nr.lider = args.LeaderId
 
 		// Actualizamos nuestro commitIndex
 		if args.LeaderCommit > nr.commitIndex {
@@ -80,8 +83,10 @@ func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
 	checkError(err)
 	if cliente != nil {
-		nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n", nr.yo, len(args.Entries), nodo)
-		err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry", &args, &reply, 90*time.Millisecond)
+		nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n",
+			nr.yo, len(args.Entries), nodo)
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.AppendEntry",
+			&args, &reply, 90*time.Millisecond)
 		cliente.Close()
 		checkError(err)
 	}
@@ -98,6 +103,7 @@ func (nr *NodoRaft) gestionarEnvioAppendEntry(nodo int, args AppendEntryPeticion
 	}
 }
 
+// Envío de llamada AppendEntry a todas las réplicas
 func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	// Inicializamos la petición de AppendEntry
 	var peticion AppendEntryPeticion
@@ -125,6 +131,16 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 		}
 	}
 
+	nr.gestionRespuestas(timeoutChan, canalMandato)
+
+	// Actualizamos el commitIndex
+	nr.mux.Lock()
+	nr.commitIndex += len(entries)
+	nr.mux.Unlock()
+}
+
+// Gestión de las respuestas a AppendEntry recibidas de los nodo
+func (nr *NodoRaft) gestionRespuestas(timeoutChan <-chan time.Time, canalMandato chan int) {
 	select {
 	// Recibimos las respuestas a las llamadas
 	case mandato := <-canalMandato:
@@ -141,9 +157,4 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	case <-timeoutChan:
 		// Si vence el timeout, dejamos de esperar las respuestas
 	}
-
-	// Actualizamos el commitIndex
-	nr.mux.Lock()
-	nr.commitIndex += len(entries)
-	nr.mux.Unlock()
 }

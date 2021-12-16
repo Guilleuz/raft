@@ -1,19 +1,14 @@
 package main
 
 import (
-	//"errors"
-	//"fmt"
-	//"log"
 	"fmt"
 	"net"
 	"net/http"
 	"net/rpc"
 	"os"
-	"raft/internal/comun/check"
 	"raft/internal/raft"
 	"runtime"
 	"strconv"
-	//"time"
 )
 
 func checkError(err error) {
@@ -24,10 +19,15 @@ func checkError(err error) {
 	}
 }
 
+
 func main() {
 	// obtener entero de indice de este nodo
 	me, err := strconv.Atoi(os.Args[1])
-	check.CheckError(err, "Main, mal numero entero de indice de nodo:")
+	if err != nil {
+		fmt.Printf("Main, mal numero entero de indice de nodo:")
+		checkError(err)
+		os.Exit(1)
+	}
 
 	var nodos []string
 	// Resto de argumento son los end points como strings
@@ -47,7 +47,11 @@ func main() {
 	fmt.Println("RPC OK")
 
 	l, err := net.Listen("tcp", os.Args[2:][me])
-	check.CheckError(err, "Main listen error:")
+	if err != nil {
+		fmt.Printf("Main listen error:")
+		checkError(err)
+		os.Exit(1)
+	}
 
 	fmt.Println("Net Listen OK")
 

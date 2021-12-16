@@ -29,9 +29,6 @@ const (
 	REPLICA2 = MAQUINA2 + ":" + PUERTOREPLICA2
 	REPLICA3 = MAQUINA3 + ":" + PUERTOREPLICA3
 
-	// PATH de los ejecutables de modulo golang de servicio de vistas
-	//PATH = filepath.Join(os.Getenv("HOME"), "tmp", "P4", "raft")
-
 	// paquete main de ejecutables relativos a PATH previo
 	EXECREPLICA = "./srvraft"
 
@@ -43,8 +40,11 @@ const (
 
 	// Ubicar, en esta constante, nombre de fichero de vuestra clave privada local
 	// emparejada con la clave pública en authorized_keys de máquinas remotas
-
 	PRIVKEYFILE = "id_rsa"
+
+	// Si true, se escribirá por pantalla lo que escriban las aplicaciones
+	// ejecutadas con SSH
+	imprimirSSH = false;
 )
 
 func checkError(err error) {
@@ -63,26 +63,28 @@ func TestPrimerasPruebas(t *testing.T) {
 	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
 	cr.replicas = []string{REPLICA1, REPLICA2, REPLICA3}
 
-	go func() {
-		for {
-			cadena := <- cr.canal
-			fmt.Printf("CANAL-LOG:%s\n", cadena)
-		}
-	}()
+	if imprimirSSH {
+		go func() {
+			for {
+				cadena := <- cr.canal
+				fmt.Printf("CANAL-LOG:%s\n", cadena)
+			}
+		}()
+	}
 
-	// Test1 : No debería haber ningun primario, si SV no ha recibido aún latidos
+	// Test1 : Arranque y parada de un nodo
 	t.Run("T1:ArranqueYParada",
 		func(t *testing.T) { cr.soloArranqueYparadaTest1(t) })
 
-	// Test2 : No debería haber ningun primario, si SV no ha recibido aún latidos
+	// Test2 : Elección de un primer líder
 	t.Run("T2:ElegirPrimerLider",
 		func(t *testing.T) { cr.ElegirPrimerLiderTest2(t) })
 
-	// Test3: tenemos el primer primario correcto
+	// Test3: Elección de un líder tras el fallo del primero
 	t.Run("T3:FalloAnteriorElegirNuevoLider",
 		func(t *testing.T) { cr.FalloAnteriorElegirNuevoLiderTest3(t) })
 
-	// Test4: Primer nodo copia
+	// Test4: réplicación correcta de 3 escrituras
 	t.Run("T4:EscriturasConcurrentes",
 		func(t *testing.T) { cr.tresOperacionesComprometidasEstable(t) })
 }
@@ -117,10 +119,10 @@ func (cr *CanalResultados) startDistributedProcesses(
 	}
 }
 
-//
+// Finaliza la ejecución de las rélicas remotas
 func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 
-	// Parar procesos que han sido distribuidos con rpc
+	// Parar procesos que han sido ejecutados con rpc
 	for _, replica := range replicas {
 		fmt.Println("Replica a parar: " + replica)
 		cliente, err := rpc.DialHTTP("tcp", replica)
@@ -135,7 +137,7 @@ func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 // --------------------------------------------------------------------------
 // FUNCIONES DE SUBTESTS
 
-// Se pone en marcha una replica ??
+// Se pone en marcha una replica
 func (cr *CanalResultados) soloArranqueYparadaTest1(t *testing.T) {
 	//t.Skip("SKIPPED soloArranqueYparadaTest1")
 
@@ -220,15 +222,19 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 		var replyOP raft.SometerOperacionReply
 		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 		checkError(err)
-		fmt.Printf("Resultados someter 1: %d, %d, %t\n", replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+		fmt.Printf("Resultados someter 1: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
 
 		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 		checkError(err)
-		fmt.Printf("Resultados someter 2: %d, %d, %t\n", replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+		fmt.Printf("Resultados someter 2: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
 
 		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 		checkError(err)
-		fmt.Printf("Resultados someter 3: %d, %d, %t\n", replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+		fmt.Printf("Resultados someter 3: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+			
 		if replyOP.Indice != 3 {
 			t.Errorf("No se han registrado las entradas correctamente\n")
 		}
@@ -244,7 +250,6 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 // --------------------------------------------------------------------------
 // FUNCIONES DE APOYO
 // Comprobar que hay un solo lider
-// probar varias veces si se necesitan reelecciones
 func (cr *CanalResultados) pruebaUnLider() int {
 	lider := -1
 	for _, replica := range cr.replicas {

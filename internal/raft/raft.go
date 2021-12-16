@@ -48,7 +48,6 @@ type AplicaOperacion struct {
 	operacion interface{}
 }
 
-
 type Operacion struct {
 	Mandato   int
 	Operacion interface{}
@@ -60,7 +59,7 @@ type NodoRaft struct {
 
 	nodos []string // IP:Puerto de todas las réplicas
 	yo    int      // this peer's index into peers[]
-	lider int		// id de la replica que cree que es lider
+	lider int      // id de la replica que cree que es lider
 	// Utilización opcional de este logger para depuración
 	// Cada nodo Raft tiene su propio registro de trazas (logs)
 	logger *log.Logger
@@ -115,7 +114,8 @@ func (nr *NodoRaft) gestionEstado() {
 				nr.eleccion()
 			case LIDER:
 				// latido 20 veces por segundo (cada 50 ms)
-				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n", nr.yo, nr.currentTerm)
+				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n",
+					nr.yo, nr.currentTerm)
 				nr.AppendEntries([]Operacion{}, 50*time.Millisecond)
 			}
 		}
@@ -135,7 +135,7 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	nr.canalStop = make(chan bool)
 	nr.votedFor = -1
 	// Inicializamos el log de forma que todas las réplicas tengan una entrada inicial igual
-	nr.log = []Operacion{{0, nil}}	
+	nr.log = []Operacion{{0, nil}}
 	nr.estado = SEGUIDOR
 	nr.nextIndex = make([]int, len(nodos))
 	nr.matchIndex = make([]int, len(nodos))

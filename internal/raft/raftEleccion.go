@@ -21,7 +21,6 @@ func (nr *NodoRaft) eleccion() {
 	nr.mux.Unlock()
 	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
-	votosRecibidos := 1 // Nos votamos a nosotros mismos
 	// Timeout aleatorio entre 300 y 500 ms
 	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
 
@@ -36,6 +35,11 @@ func (nr *NodoRaft) eleccion() {
 		}
 	}
 
+	nr.gestionRespuestasVoto(timeout, canalVoto, canalMandato)
+}
+
+func (nr *NodoRaft) gestionRespuestasVoto(timeoutChan <-chan time.Time, canalVoto chan bool, canalMandato chan int) {
+	votosRecibidos := 1 // Nos votamos a nosotros mismos
 	select {
 	// Recibimos las respuestas a las peticiones de voto
 	case voto := <-canalVoto:
@@ -66,11 +70,12 @@ func (nr *NodoRaft) eleccion() {
 			nr.mux.Unlock()
 		}
 		nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
-	case <-timeout:
+	case <-timeoutChan:
 		// Si ha expirado el timeout, y no hemos conseguido
 		// la mayoría, ni hemos encontrado a alguien con mayor mandato,
 		// empezamos una nueva elección
-		nr.logger.Printf("Réplica %d: (candidato) timeout eleccion, mandato: %d\n", nr.yo, nr.currentTerm)
+		nr.logger.Printf("Réplica %d: (candidato) timeout eleccion, mandato: %d\n",
+			nr.yo, nr.currentTerm)
 	}
 }
 
@@ -90,15 +95,17 @@ type RespuestaPeticionVoto struct {
 // Llamada RPC para pedir el voto a una réplica
 func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
-	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi mandato: %d, el del candidato: %d\n", nr.yo, args.CandidateId, nr.votedFor, nr.currentTerm, args.Term)
+	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi mandato: %d, el del candidato: %d\n",
+		nr.yo, args.CandidateId, nr.votedFor, nr.currentTerm, args.Term)
 	if nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm {
 		// Si no hemos votado (votedFor = -1), hemos votado al mismo candidato
 		// o el mandato del candidato es mayor, le concedemos el voto
 		nr.votedFor = args.CandidateId
 		nr.currentTerm = args.Term
-		nr.estado = SEGUIDOR	// Pasamos a seguidor
+		nr.estado = SEGUIDOR // Pasamos a seguidor
 		nr.mux.Unlock()
-		nr.logger.Printf("Réplica %d: le concedo el voto al candidato %d\n", nr.yo, args.CandidateId)
+		nr.logger.Printf("Réplica %d: le concedo el voto al candidato %d\n",
+			nr.yo, args.CandidateId)
 		reply.Term = args.Term
 		reply.VoteGranted = true
 		nr.mensajeLatido <- true
@@ -107,7 +114,8 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 		nr.mux.Unlock()
 		reply.VoteGranted = false
 		reply.Term = nr.currentTerm
-		nr.logger.Printf("Réplica %d: le niego el voto al candidato %d\n", nr.yo, args.CandidateId)
+		nr.logger.Printf("Réplica %d: le niego el voto al candidato %d\n",
+			nr.yo, args.CandidateId)
 	}
 
 	return nil
@@ -122,7 +130,8 @@ func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	checkError(err)
 	if cliente != nil {
 		nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)
-		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto", args, reply, 90*time.Millisecond)
+		err = rpctimeout.CallTimeout(cliente, "NodoRaft.PedirVoto",
+			args, reply, 90*time.Millisecond)
 		cliente.Close()
 		checkError(err)
 	}
