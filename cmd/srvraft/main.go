@@ -19,7 +19,6 @@ func checkError(err error) {
 	}
 }
 
-
 func main() {
 	// obtener entero de indice de este nodo
 	me, err := strconv.Atoi(os.Args[1])

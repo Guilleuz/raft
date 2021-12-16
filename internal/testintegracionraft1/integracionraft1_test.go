@@ -44,7 +44,7 @@ const (
 
 	// Si true, se escribirá por pantalla lo que escriban las aplicaciones
 	// ejecutadas con SSH
-	imprimirSSH = false;
+	imprimirSSH = false
 )
 
 func checkError(err error) {
@@ -60,13 +60,14 @@ func TestPrimerasPruebas(t *testing.T) {
 	// Crear canal de resultados de ejecuciones ssh en maquinas remotas
 	var cr CanalResultados
 	cr.canal = make(chan string, 2000)
-	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
+	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1,
+		REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
 	cr.replicas = []string{REPLICA1, REPLICA2, REPLICA3}
 
 	if imprimirSSH {
 		go func() {
 			for {
-				cadena := <- cr.canal
+				cadena := <-cr.canal
 				fmt.Printf("CANAL-LOG:%s\n", cadena)
 			}
 		}()
@@ -234,7 +235,7 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 		checkError(err)
 		fmt.Printf("Resultados someter 3: %d, %d, %t\n",
 			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
-			
+
 		if replyOP.Indice != 3 {
 			t.Errorf("No se han registrado las entradas correctamente\n")
 		}
@@ -259,12 +260,13 @@ func (cr *CanalResultados) pruebaUnLider() int {
 		if cliente != nil {
 			err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, reply)
 			checkError(err)
-			fmt.Printf("Estado Réplica %d: mandato:%d, idLider:%d, esLider:%t\n", reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
+			fmt.Printf("Estado Réplica %d: mandato:%d, idLider:%d, esLider:%t\n",
+				reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
 			if reply.EsLider && lider == -1 {
 				lider = reply.Yo
 			} else if reply.EsLider {
 				return -1 // Hay más de un líder
-			}	
+			}
 		}
 	}
 
