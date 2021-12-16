@@ -143,7 +143,7 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 
 	if kEnableDebugLogs {
 		nombreNodo := nodos[yo]
-		logPrefix := fmt.Sprintf("%s ", nombreNodo)
+		logPrefix := fmt.Sprintf("%s", nombreNodo)
 		if kLogToStdout {
 			nr.logger = log.New(os.Stdout, nombreNodo,
 				log.Lmicroseconds|log.Lshortfile)
