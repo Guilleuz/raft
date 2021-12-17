@@ -44,7 +44,7 @@ const (
 
 	// Si true, se escribirá por pantalla lo que escriban las aplicaciones
 	// ejecutadas con SSH
-	imprimirSSH = false;
+	imprimirSSH = false
 )
 
 func checkError(err error) {
@@ -66,7 +66,7 @@ func TestPrimerasPruebas(t *testing.T) {
 	if imprimirSSH {
 		go func() {
 			for {
-				cadena := <- cr.canal
+				cadena := <-cr.canal
 				fmt.Printf("CANAL-LOG:%s\n", cadena)
 			}
 		}()
@@ -113,10 +113,11 @@ func (cr *CanalResultados) startDistributedProcesses(
 			REPLICACMD+" "+strconv.Itoa(numeroReplica)+" "+listaReplicas,
 			[]string{maquina}, cr.canal, PRIVKEYFILE)
 
-		// dar tiempo para se establezcan las replicas
-		time.Sleep(10000 * time.Millisecond)
 		numeroReplica++
 	}
+
+	// dar tiempo para se establezcan las replicas
+	time.Sleep(10000 * time.Millisecond)
 }
 
 // Finaliza la ejecución de las rélicas remotas
@@ -139,7 +140,7 @@ func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 
 // Se pone en marcha una replica
 func (cr *CanalResultados) soloArranqueYparadaTest1(t *testing.T) {
-	//t.Skip("SKIPPED soloArranqueYparadaTest1")
+	t.Skip("SKIPPED soloArranqueYparadaTest1")
 
 	fmt.Println(t.Name(), ".....................")
 
@@ -154,7 +155,7 @@ func (cr *CanalResultados) soloArranqueYparadaTest1(t *testing.T) {
 
 // Primer lider en marcha
 func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
-	//t.Skip("SKIPPED ElegirPrimerLiderTest2")
+	t.Skip("SKIPPED ElegirPrimerLiderTest2")
 
 	fmt.Println(t.Name(), ".....................")
 
@@ -174,7 +175,7 @@ func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
 
 // Fallo de un primer lider y reeleccion de uno nuevo
 func (cr *CanalResultados) FalloAnteriorElegirNuevoLiderTest3(t *testing.T) {
-	//t.Skip("SKIPPED FalloAnteriorElegirNuevoLiderTest3")
+	t.Skip("SKIPPED FalloAnteriorElegirNuevoLiderTest3")
 
 	fmt.Println(t.Name(), ".....................")
 
@@ -204,6 +205,7 @@ func (cr *CanalResultados) FalloAnteriorElegirNuevoLiderTest3(t *testing.T) {
 
 // 3 operaciones comprometidas con situacion estable y sin fallos
 func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
+	//t.Skip("SKIPPED tresOperacionesComprometidasEstable")
 	fmt.Println(t.Name(), ".....................")
 
 	// Poner en marcha  3 réplicas Raft
@@ -234,7 +236,7 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 		checkError(err)
 		fmt.Printf("Resultados someter 3: %d, %d, %t\n",
 			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
-			
+
 		if replyOP.Indice != 3 {
 			t.Errorf("No se han registrado las entradas correctamente\n")
 		}
@@ -264,7 +266,7 @@ func (cr *CanalResultados) pruebaUnLider() int {
 				lider = reply.Yo
 			} else if reply.EsLider {
 				return -1 // Hay más de un líder
-			}	
+			}
 		}
 	}
 
