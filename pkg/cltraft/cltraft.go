@@ -37,7 +37,7 @@ func main() {
 		if nodo >= len(nodos) {
 			continue
 		}
-		cliente, err := rpc.DialHTTP("tcp", nodos[nodo])
+		cliente, err := rpc.Dial("tcp", nodos[nodo])
 		checkError(err)
 		if cliente == nil {
 			continue

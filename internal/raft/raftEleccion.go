@@ -21,9 +21,6 @@ func (nr *NodoRaft) eleccion() {
 	nr.mux.Unlock()
 	nr.logger.Printf("Réplica %d: comienzo una elección, mandato: %d\n", nr.yo, nr.currentTerm)
 
-	// Timeout aleatorio entre 300 y 500 ms
-	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
-
 	canalVoto := make(chan bool, len(nr.nodos))
 	canalMandato := make(chan int, len(nr.nodos))
 
@@ -35,47 +32,53 @@ func (nr *NodoRaft) eleccion() {
 		}
 	}
 
-	nr.gestionRespuestasVoto(timeout, canalVoto, canalMandato)
+	nr.gestionRespuestasVoto(canalVoto, canalMandato)
 }
 
-func (nr *NodoRaft) gestionRespuestasVoto(timeoutChan <-chan time.Time, canalVoto chan bool, canalMandato chan int) {
+func (nr *NodoRaft) gestionRespuestasVoto(canalVoto chan bool, canalMandato chan int) {
 	votosRecibidos := 1 // Nos votamos a nosotros mismos
-	select {
-	// Recibimos las respuestas a las peticiones de voto
-	case voto := <-canalVoto:
-		if voto {
-			// Si recibimos un voto, y tenemos mayoría, la elección
-			// acaba y pasamos a ser el líder
-			votosRecibidos++
-			if votosRecibidos >= len(nr.nodos)/2+1 {
-				nr.mux.Lock()
-				nr.lider = nr.yo
-				nr.estado = LIDER
-				for i := 0; i < len(nr.nodos); i++ {
-					nr.nextIndex[i] = len(nr.log)
-					nr.matchIndex[i] = 0
+
+	for {
+		select {
+		// Recibimos las respuestas a las peticiones de voto
+		case voto := <-canalVoto:
+			if voto {
+				// Si recibimos un voto, y tenemos mayoría, la elección
+				// acaba y pasamos a ser el líder
+				votosRecibidos++
+				if votosRecibidos >= len(nr.nodos)/2+1 {
+					nr.mux.Lock()
+					nr.lider = nr.yo
+					nr.estado = LIDER
+					for i := 0; i < len(nr.nodos); i++ {
+						nr.nextIndex[i] = len(nr.log)
+						nr.matchIndex[i] = 0
+					}
+					nr.mux.Unlock()
+					nr.logger.Printf("Réplica %d: he recibido mayoría, paso a LIDER\n", nr.yo)
+					return
 				}
-				nr.mux.Unlock()
-				nr.logger.Printf("Réplica %d: he recibido mayoría, paso a LIDER\n", nr.yo)
 			}
+		case mandato := <-canalMandato:
+			// Si recibimos una respuesta con mayor mandato que
+			// el nuestro, pasamos a ser seguidor
+			if mandato > nr.currentTerm {
+				nr.mux.Lock()
+				nr.votedFor = -1
+				nr.currentTerm = mandato
+				nr.estado = SEGUIDOR
+				nr.mux.Unlock()
+			}
+			nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
+			return
+		case <-time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond):
+			// Si ha expirado el timeout, y no hemos conseguido
+			// la mayoría, ni hemos encontrado a alguien con mayor mandato,
+			// empezamos una nueva elección
+			nr.logger.Printf("Réplica %d: (candidato) timeout eleccion, mandato: %d\n",
+				nr.yo, nr.currentTerm)
+			return
 		}
-	case mandato := <-canalMandato:
-		// Si recibimos una respuesta con mayor mandato que
-		// el nuestro, pasamos a ser seguidor
-		if mandato > nr.currentTerm {
-			nr.mux.Lock()
-			nr.votedFor = -1
-			nr.currentTerm = mandato
-			nr.estado = SEGUIDOR
-			nr.mux.Unlock()
-		}
-		nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
-	case <-timeoutChan:
-		// Si ha expirado el timeout, y no hemos conseguido
-		// la mayoría, ni hemos encontrado a alguien con mayor mandato,
-		// empezamos una nueva elección
-		nr.logger.Printf("Réplica %d: (candidato) timeout eleccion, mandato: %d\n",
-			nr.yo, nr.currentTerm)
 	}
 }
 
@@ -126,7 +129,7 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 // Devuelve false en caso contrario
 func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 	reply *RespuestaPeticionVoto) bool {
-	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
+	cliente, err := rpc.Dial("tcp", nr.nodos[nodo])
 	checkError(err)
 	if cliente != nil {
 		nr.logger.Printf("Réplica %d: (candidato) le pido el voto a %d\n", nr.yo, nodo)

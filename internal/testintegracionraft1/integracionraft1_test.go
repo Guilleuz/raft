@@ -60,7 +60,8 @@ func TestPrimerasPruebas(t *testing.T) {
 	// Crear canal de resultados de ejecuciones ssh en maquinas remotas
 	var cr CanalResultados
 	cr.canal = make(chan string, 2000)
-	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1, REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
+	cr.replicasMaquinas = map[string]string{REPLICA1: MAQUINA1,
+		REPLICA2: MAQUINA2, REPLICA3: MAQUINA3}
 	cr.replicas = []string{REPLICA1, REPLICA2, REPLICA3}
 
 	if imprimirSSH {
@@ -126,7 +127,7 @@ func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 	// Parar procesos que han sido ejecutados con rpc
 	for _, replica := range replicas {
 		fmt.Println("Replica a parar: " + replica)
-		cliente, err := rpc.DialHTTP("tcp", replica)
+		cliente, err := rpc.Dial("tcp", replica)
 		checkError(err)
 		if cliente != nil {
 			err = cliente.Call("NodoRaft.ParaRPC", struct{}{}, struct{}{})
@@ -213,7 +214,7 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 
 	lider := cr.pruebaUnLider()
 	if lider != -1 {
-		cliente, err := rpc.DialHTTP("tcp", cr.replicas[lider])
+		cliente, err := rpc.Dial("tcp", cr.replicas[lider])
 		checkError(err)
 		// SI cliente nil no superado
 		if cliente == nil {
@@ -255,13 +256,14 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 func (cr *CanalResultados) pruebaUnLider() int {
 	lider := -1
 	for _, replica := range cr.replicas {
-		cliente, err := rpc.DialHTTP("tcp", replica)
+		cliente, err := rpc.Dial("tcp", replica)
 		checkError(err)
 		reply := new(raft.ObtenerEstadoReply)
 		if cliente != nil {
 			err = cliente.Call("NodoRaft.ObtenerEstadoRPC", struct{}{}, reply)
 			checkError(err)
-			fmt.Printf("Estado Réplica %d: mandato:%d, idLider:%d, esLider:%t\n", reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
+			fmt.Printf("Estado Réplica %d: mandato:%d, idLider:%d, esLider:%t\n",
+				reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
 			if reply.EsLider && lider == -1 {
 				lider = reply.Yo
 			} else if reply.EsLider {
