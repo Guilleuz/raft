@@ -50,6 +50,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	reply.Term = nr.currentTerm
 	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n",
 		nr.yo, len(args.Entries), args.LeaderId)
+	// TODO -> ignoro si mi mandato es mayor o igual y soy candidato o lider
 	if nr.currentTerm > args.Term || (nr.currentTerm >= args.Term && nr.estado == CANDIDATO) ||
 		len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
 		// Si mi mandato es mayor, o el log no contiene una entrada
