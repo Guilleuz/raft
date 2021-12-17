@@ -48,22 +48,26 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	}
 
 	reply.Term = nr.currentTerm
-	nr.logger.Printf("Réplica %d: %d entrada(s) de log recibidas de %d\n",
-		nr.yo, len(args.Entries), args.LeaderId)
 	// TODO -> ignoro si mi mandato es mayor o igual y soy candidato o lider
+	// TODO -> parece haber fallo al aceptar entradas
 	if nr.currentTerm > args.Term || (nr.currentTerm >= args.Term && nr.estado == CANDIDATO) ||
 		len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
 		// Si mi mandato es mayor, o el log no contiene una entrada
 		// en PrevLogIndex con el mandato PrevLogTerm
 		// Success será falso
+		nr.logger.Printf("Réplica %d: %d entrada(s) de log ignoradas de %d\n",
+			nr.yo, len(args.Entries), args.LeaderId)
 		reply.Success = false
 	} else {
 		// Si no, success será true
 		reply.Success = true
+		nr.logger.Printf("Réplica %d: %d entrada(s) de log aceptadas de %d\n",
+			nr.yo, len(args.Entries), args.LeaderId)
 
 		nr.mux.Lock()
 		// Actualizamos el log
 		nr.log = append(nr.log, args.Entries...)
+		// Actualizamos el lider
 		nr.lider = args.LeaderId
 
 		// Actualizamos nuestro commitIndex
