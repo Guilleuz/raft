@@ -80,7 +80,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 // Devuelve false en caso contrario
 func (nr *NodoRaft) enviarAppendEntry(nodo int, args *AppendEntryPeticion,
 	reply *AppendEntryRespuesta) bool {
-	cliente, err := rpc.DialHTTP("tcp", nr.nodos[nodo])
+	cliente, err := rpc.Dial("tcp", nr.nodos[nodo])
 	checkError(err)
 	if cliente != nil {
 		nr.logger.Printf("Réplica %d: (lider) %d entrada(s) de log enviadas a %d\n",
@@ -121,7 +121,6 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 	}
 	nr.mux.Unlock()
 
-	timeoutChan := time.After(timeout)
 	canalMandato := make(chan int, len(nr.nodos))
 
 	for i := 0; i < len(nr.nodos); i++ {
@@ -131,7 +130,7 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 		}
 	}
 
-	nr.gestionRespuestas(timeoutChan, canalMandato)
+	nr.gestionRespuestas(timeout, canalMandato)
 
 	// Actualizamos el commitIndex
 	nr.mux.Lock()
@@ -140,21 +139,25 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 }
 
 // Gestión de las respuestas a AppendEntry recibidas de los nodo
-func (nr *NodoRaft) gestionRespuestas(timeoutChan <-chan time.Time, canalMandato chan int) {
-	select {
-	// Recibimos las respuestas a las llamadas
-	case mandato := <-canalMandato:
-		// Si recibimos una respuesta con mayor mandato que
-		// el nuestro, pasamos a ser seguidor
-		if mandato > nr.currentTerm {
-			nr.mux.Lock()
-			nr.currentTerm = mandato
-			nr.votedFor = -1
-			nr.estado = SEGUIDOR
-			nr.mux.Unlock()
-			nr.logger.Printf("Réplica %d: (lider) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
+func (nr *NodoRaft) gestionRespuestas(timeout time.Duration, canalMandato chan int) {
+	for {
+		select {
+		// Recibimos las respuestas a las llamadas
+		case mandato := <-canalMandato:
+			// Si recibimos una respuesta con mayor mandato que
+			// el nuestro, pasamos a ser seguidor
+			if mandato > nr.currentTerm {
+				nr.mux.Lock()
+				nr.currentTerm = mandato
+				nr.votedFor = -1
+				nr.estado = SEGUIDOR
+				nr.mux.Unlock()
+				nr.logger.Printf("Réplica %d: (lider) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
+				return
+			}
+		case <-time.After(timeout):
+			// Si vence el timeout, dejamos de esperar las respuestas
+			return
 		}
-	case <-timeoutChan:
-		// Si vence el timeout, dejamos de esperar las respuestas
 	}
 }

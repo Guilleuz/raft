@@ -98,13 +98,12 @@ func (nr *NodoRaft) gestionEstado() {
 			nr.mux.Unlock()
 			switch estadoActual {
 			case SEGUIDOR:
-				// Definimos un timeout aleatorio entre 150 y 300 ms
-				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
 				select {
 				case <-nr.mensajeLatido:
 					// Si recibimos un mensaje, se reinicia el timeout
-				case <-timeout:
-					// Timeout expirado, pasamos a candidato
+				case <-time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond):
+					// Timeout aleatorio entre 150 y 300ms
+					// Si expira, pasamos a candidato
 					nr.mux.Lock()
 					nr.estado = CANDIDATO
 					nr.mux.Unlock()

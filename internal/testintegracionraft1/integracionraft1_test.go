@@ -126,7 +126,7 @@ func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 	// Parar procesos que han sido ejecutados con rpc
 	for _, replica := range replicas {
 		fmt.Println("Replica a parar: " + replica)
-		cliente, err := rpc.DialHTTP("tcp", replica)
+		cliente, err := rpc.Dial("tcp", replica)
 		checkError(err)
 		if cliente != nil {
 			err = cliente.Call("NodoRaft.ParaRPC", struct{}{}, struct{}{})
@@ -212,7 +212,7 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 
 	lider := cr.pruebaUnLider()
 	if lider != -1 {
-		cliente, err := rpc.DialHTTP("tcp", cr.replicas[lider])
+		cliente, err := rpc.Dial("tcp", cr.replicas[lider])
 		checkError(err)
 		// SI cliente nil no superado
 		if cliente == nil {
@@ -254,7 +254,7 @@ func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
 func (cr *CanalResultados) pruebaUnLider() int {
 	lider := -1
 	for _, replica := range cr.replicas {
-		cliente, err := rpc.DialHTTP("tcp", replica)
+		cliente, err := rpc.Dial("tcp", replica)
 		checkError(err)
 		reply := new(raft.ObtenerEstadoReply)
 		if cliente != nil {
