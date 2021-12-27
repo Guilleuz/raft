@@ -37,7 +37,7 @@ func (nr *NodoRaft) eleccion() {
 
 func (nr *NodoRaft) gestionRespuestasVoto(canalVoto chan bool, canalMandato chan int) {
 	votosRecibidos := 1 // Nos votamos a nosotros mismos
-
+	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
 	for {
 		select {
 		// Recibimos las respuestas a las peticiones de voto
@@ -68,10 +68,10 @@ func (nr *NodoRaft) gestionRespuestasVoto(canalVoto chan bool, canalMandato chan
 				nr.currentTerm = mandato
 				nr.estado = SEGUIDOR
 				nr.mux.Unlock()
+				nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
+				return
 			}
-			nr.logger.Printf("Réplica %d: (candidato) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
-			return
-		case <-time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond):
+		case <- timeout:
 			// Si ha expirado el timeout, y no hemos conseguido
 			// la mayoría, ni hemos encontrado a alguien con mayor mandato,
 			// empezamos una nueva elección
@@ -98,9 +98,13 @@ type RespuestaPeticionVoto struct {
 // Llamada RPC para pedir el voto a una réplica
 func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVoto) error {
 	nr.mux.Lock()
-	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi mandato: %d, el del candidato: %d\n",
-		nr.yo, args.CandidateId, nr.votedFor, nr.currentTerm, args.Term)
-	if nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm {
+	ultimaEntrada := len(nr.log) - 1
+	ultimoMandato := nr.log[ultimaEntrada].Mandato
+	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi log: i%d m%d, el del candidato: i%d m%d\n",
+		nr.yo, args.CandidateId, nr.votedFor, ultimaEntrada, ultimoMandato, args.LastLogIndex, args.LastLogTerm)
+	
+	if (nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm) && (args.LastLogTerm > ultimoMandato ||
+		(args.LastLogTerm == ultimoMandato && args.LastLogIndex >= ultimaEntrada)) {
 		// Si no hemos votado (votedFor = -1), hemos votado al mismo candidato
 		// o el mandato del candidato es mayor, le concedemos el voto
 		nr.votedFor = args.CandidateId

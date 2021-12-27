@@ -98,18 +98,22 @@ func (nr *NodoRaft) gestionEstado() {
 			nr.mux.Unlock()
 			switch estadoActual {
 			case SEGUIDOR:
+				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
 				select {
 				case <-nr.mensajeLatido:
 					// Si recibimos un mensaje, se reinicia el timeout
-				case <-time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond):
+				case <- timeout:
 					// Timeout aleatorio entre 150 y 300ms
 					// Si expira, pasamos a candidato
+					nr.logger.Printf("Réplica %d: vence el timeout, paso a candidato\n", nr.yo)
 					nr.mux.Lock()
+					nr.votedFor = nr.yo
 					nr.estado = CANDIDATO
 					nr.mux.Unlock()
 				}
 			case CANDIDATO:
 				// Comenzamos una elección
+				nr.logger.Printf("Réplica %d: antes del inicio de la eleccion\n", nr.yo)
 				nr.eleccion()
 			case LIDER:
 				// latido 20 veces por segundo (cada 50 ms)

@@ -34,7 +34,7 @@ func min(a, b int) int {
 // Llamada RPC AppendEntry, que permite añadir una serie de entradas al log de una réplica
 func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRespuesta) error {
 	nr.mux.Lock()
-	if nr.currentTerm < args.Term {
+	if nr.currentTerm < args.Term || mejor log{
 		// Si el mandato es mayor que el mío, lo actualizo y paso a seguidor
 		nr.currentTerm = args.Term
 		nr.votedFor = -1
@@ -50,7 +50,9 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	reply.Term = nr.currentTerm
 	// TODO -> ignoro si mi mandato es mayor o igual y soy candidato o lider
 	// TODO -> parece haber fallo al aceptar entradas
-	if nr.currentTerm > args.Term || (nr.currentTerm >= args.Term && nr.estado == CANDIDATO) ||
+	nr.logger.Printf("Réplica %d: AppendEntry de %d, len de mi log: %d, PrevLogIndex: %d, mandato PrevLogIndex: %d, PrevLogTerm: %d\n",
+			nr.yo, args.LeaderId, len(nr.log), args.PrevLogIndex, nr.log[args.PrevLogIndex].Mandato, args.PrevLogTerm )
+	if nr.currentTerm > args.Term || (nr.currentTerm >= args.Term && (nr.estado == CANDIDATO || nr.estado == LIDER)) ||
 		len(nr.log) <= args.PrevLogIndex || nr.log[args.PrevLogIndex].Mandato != args.PrevLogTerm {
 		// Si mi mandato es mayor, o el log no contiene una entrada
 		// en PrevLogIndex con el mandato PrevLogTerm
@@ -122,7 +124,7 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 		peticion.PrevLogIndex = 0
 		peticion.PrevLogTerm = 0
 	} else {
-		peticion.PrevLogTerm = nr.log[peticion.PrevLogTerm].Mandato
+		peticion.PrevLogTerm = nr.log[peticion.PrevLogIndex].Mandato
 	}
 	nr.mux.Unlock()
 
@@ -145,6 +147,7 @@ func (nr *NodoRaft) AppendEntries(entries []Operacion, timeout time.Duration) {
 
 // Gestión de las respuestas a AppendEntry recibidas de los nodo
 func (nr *NodoRaft) gestionRespuestas(timeout time.Duration, canalMandato chan int) {
+	timeoutChannel := time.After(timeout)
 	for {
 		select {
 		// Recibimos las respuestas a las llamadas
@@ -160,7 +163,7 @@ func (nr *NodoRaft) gestionRespuestas(timeout time.Duration, canalMandato chan i
 				nr.logger.Printf("Réplica %d: (lider) mandato superior encontrado, paso a SEGUIDOR\n", nr.yo)
 				return
 			}
-		case <-time.After(timeout):
+		case <- timeoutChannel:
 			// Si vence el timeout, dejamos de esperar las respuestas
 			return
 		}
