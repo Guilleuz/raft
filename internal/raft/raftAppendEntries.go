@@ -34,7 +34,7 @@ func min(a, b int) int {
 // Llamada RPC AppendEntry, que permite añadir una serie de entradas al log de una réplica
 func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRespuesta) error {
 	nr.mux.Lock()
-	if nr.currentTerm < args.Term || mejor log{
+	if nr.currentTerm < args.Term {
 		// Si el mandato es mayor que el mío, lo actualizo y paso a seguidor
 		nr.currentTerm = args.Term
 		nr.votedFor = -1
