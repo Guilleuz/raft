@@ -14,6 +14,8 @@ import (
 	"time"
 )
 
+var almacenamiento map[string]string
+
 //  false deshabilita por completo los logs de depuracion
 // Aseguraros de poner kEnableDebugLogs a false antes de la entrega
 const kEnableDebugLogs = true
@@ -53,6 +55,12 @@ type Operacion struct {
 	Operacion interface{}
 }
 
+type TipoOperacion struct {
+	Operacion string // La operaciones posibles son "leer" y "escribir"
+	Clave     string
+	Valor     string // en el caso de la lectura Valor = ""
+}
+
 // Tipo de dato Go que representa un solo nodo (réplica) de raft
 type NodoRaft struct {
 	mux sync.Mutex // Mutex para proteger acceso a estado compartido
@@ -79,6 +87,7 @@ type NodoRaft struct {
 	nextIndex  []int // indice del siguiente registro de entradas a mandar
 	matchIndex []int // indice del mayor registro de entradas conocido para ser replicado
 
+	canalAplicar  chan AplicaOperacion
 	mensajeLatido chan bool
 	canalStop     chan bool
 }
@@ -102,7 +111,7 @@ func (nr *NodoRaft) gestionEstado() {
 				select {
 				case <-nr.mensajeLatido:
 					// Si recibimos un mensaje, se reinicia el timeout
-				case <- timeout:
+				case <-timeout:
 					// Timeout aleatorio entre 150 y 300ms
 					// Si expira, pasamos a candidato
 					nr.logger.Printf("Réplica %d: vence el timeout, paso a candidato\n", nr.yo)
@@ -119,7 +128,7 @@ func (nr *NodoRaft) gestionEstado() {
 				// latido 20 veces por segundo (cada 50 ms)
 				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n",
 					nr.yo, nr.currentTerm)
-				nr.AppendEntries([]Operacion{}, 50*time.Millisecond)
+				nr.AppendEntries(50 * time.Millisecond)
 			}
 		}
 	}
@@ -139,10 +148,15 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	nr.votedFor = -1
 	// Inicializamos el log de forma que todas las réplicas tengan una entrada inicial igual
 	nr.log = []Operacion{{0, nil}}
+
 	nr.estado = SEGUIDOR
 	nr.nextIndex = make([]int, len(nodos))
 	nr.matchIndex = make([]int, len(nodos))
 	nr.lider = -1
+
+	nr.commitIndex = 0
+	nr.lastApplied = 0
+	nr.canalAplicar = make(chan AplicaOperacion, 100)
 
 	if kEnableDebugLogs {
 		nombreNodo := nodos[yo]
@@ -168,5 +182,20 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	}
 
 	go nr.gestionEstado()
+	go maquinaDeEstados(canalAplicar)
 	return nr
+}
+
+func maquinaDeEstados(canalAplicar chan AplicaOperacion) {
+	for {
+		op := <-canalAplicar
+		operacion, ok := op.operacion.(TipoOperacion)
+		if ok {
+			if operacion.Operacion == "escribir" {
+				almacenamiento[operacion.Clave] = operacion.Valor
+			} else if operacion.Operacion == "leer" {
+
+			}
+		}
+	}
 }

@@ -41,29 +41,33 @@ func (nr *NodoRaft) ObtenerEstadoRPC(_ *struct{}, reply *ObtenerEstadoReply) err
 // Somete una operación, devolviendo el índice y
 // el mandato en el que se introducirá si es comprometida
 // Devolverá true si el nodo es líder, falso si no lo es
-func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool) {
+func (nr *NodoRaft) SometerOperacion(operacion interface{}) (int, int, bool, int, string) {
 	nr.mux.Lock()
 	indice := len(nr.log)
 	mandato := nr.currentTerm
 	EsLider := nr.estado == LIDER
+	idLider := nr.lider
+	valor := ""
 	nr.mux.Unlock()
 
 	if EsLider {
 		nr.mux.Lock()
 		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
-		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 50*time.Millisecond)
+		go nr.AppendEntries(50 * time.Millisecond)
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: (lider) recibo una nueva operación, mandato: %d\n",
 			nr.yo, nr.currentTerm)
 	}
 
-	return indice, mandato, EsLider
+	return indice, mandato, EsLider, idLider, valor
 }
 
 type SometerOperacionReply struct {
 	Indice  int
 	Mandato int
 	EsLider bool
+	IdLider int
+	Valor   string
 }
 
 // Llamada RPC que implementa la funcionalidad SometerOperacion
@@ -77,7 +81,7 @@ func (nr *NodoRaft) SometerOperacionRPC(operacion interface{}, reply *SometerOpe
 	if reply.EsLider {
 		nr.mux.Lock()
 		nr.log = append(nr.log, Operacion{nr.currentTerm, operacion})
-		go nr.AppendEntries([]Operacion{{nr.currentTerm, operacion}}, 50*time.Millisecond)
+		go nr.AppendEntries(50 * time.Millisecond)
 		nr.mux.Unlock()
 		nr.logger.Printf("Réplica %d: (lider) recibo una nueva operación, mandato: %d\n",
 			nr.yo, nr.currentTerm)

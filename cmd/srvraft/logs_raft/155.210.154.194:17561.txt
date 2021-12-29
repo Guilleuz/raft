@@ -1,0 +1,986 @@
+155.210.154.194:1756112:44:09.589497 raft.go:170: logger initialized
+155.210.154.194:1756112:44:09.589569 raft.go:88: Réplica 0: comienza la ejecución
+155.210.154.194:1756112:44:09.828327 raft.go:108: Réplica 0: vence el timeout, paso a candidato
+155.210.154.194:1756112:44:09.828345 raft.go:116: Réplica 0: antes del inicio de la eleccion
+155.210.154.194:1756112:44:09.828350 raftEleccion.go:22: Réplica 0: comienzo una elección, mandato: 1
+155.210.154.194:1756112:44:09.829236 raftEleccion.go:139: Réplica 0: (candidato) le pido el voto a 2
+155.210.154.194:1756112:44:09.829343 raftEleccion.go:139: Réplica 0: (candidato) le pido el voto a 1
+155.210.154.194:1756112:44:09.830264 raftEleccion.go:58: Réplica 0: he recibido mayoría, paso a LIDER
+155.210.154.194:1756112:44:09.830270 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:09.830674 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:09.830703 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:09.880533 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:09.881805 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:09.881829 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:09.930608 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:09.931834 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:09.931874 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:09.980779 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:09.981264 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:09.981374 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.031533 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.032102 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.032315 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.081640 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.083194 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.083206 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.132140 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.133390 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.133401 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.183105 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.184264 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.184281 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.233753 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.234977 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.234994 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.284642 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.285933 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.285941 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.335541 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.336296 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.336714 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.385637 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.387299 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.387313 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.436108 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.437663 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.437685 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.486995 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.488187 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.488221 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.537775 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.538987 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.539004 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.588795 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.589996 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.590015 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.639699 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.640900 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.640908 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.690648 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.691782 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.691801 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.741423 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.742582 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.742590 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.791536 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.793102 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.793136 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.842397 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.843051 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.843536 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.893307 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.894332 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.894420 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.943925 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.945125 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.945151 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:10.994637 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:10.995856 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:10.995871 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.044715 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.045829 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.045872 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.094758 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.095500 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.096035 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.145336 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.146523 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.146539 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.195853 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.197241 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.197252 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.246865 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.248188 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.248202 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.297403 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.298671 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.298688 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.347774 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.349346 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.349381 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.397836 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.399141 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.399153 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.447949 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.449567 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.449581 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.498144 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.498923 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.499367 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.548736 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.549985 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.550002 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.599632 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.600806 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.600823 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.650413 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.651749 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.651758 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.700497 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.701754 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.701793 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.751545 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.752797 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.752812 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.802578 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.803881 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.803888 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.853600 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.854920 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.854927 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.904501 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.905682 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.905711 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:11.955321 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:11.956629 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:11.956637 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.005573 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.007206 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.007247 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.055645 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.056387 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.056716 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.106401 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.107705 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.107721 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.157283 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.158615 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.158636 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.207957 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.209270 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.209280 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.258809 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.260050 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.260096 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.309797 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.311105 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.311111 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.360628 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.361783 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.361812 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.411570 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.412817 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.412832 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.461660 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.462841 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.462851 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.512187 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.513345 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.513349 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.562936 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.564246 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.564254 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.613375 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.614713 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.614753 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.664044 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.665240 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.665267 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.714459 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.715139 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.715643 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.765366 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.766136 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.766151 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.815438 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.817068 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.817079 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.866405 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.867734 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.867750 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.916681 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.918262 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:12.918310 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.966868 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:12.968373 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:12.968416 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.017559 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.018280 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.018721 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.068109 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.069068 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.069231 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.118804 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.120131 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.120146 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.169390 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.170993 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.171038 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.220423 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.221710 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.221725 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.271289 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.272496 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.272512 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.322005 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.323264 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.323280 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.372820 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.374140 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.374523 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.423306 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.424566 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.424576 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.474303 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.475720 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.475745 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.525277 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.526837 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.526858 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.576459 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.577966 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.577990 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.627647 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.629134 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.629172 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.678582 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.680160 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.680201 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.728680 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.730283 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.730318 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.779483 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.780777 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.780792 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.829539 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.830985 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.831028 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.880589 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.881657 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.881666 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.930859 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.932381 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.932397 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:13.981779 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:13.983008 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:13.983023 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.032417 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.033596 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.033607 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.083266 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.084283 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.084430 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.134188 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.135403 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.135419 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.185002 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.186325 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.186342 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.235929 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.236624 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.236945 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.286362 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.288018 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.288063 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.337492 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.338258 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.338666 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.388334 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.389657 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.389676 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.439355 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.440651 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.440661 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.489981 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.491306 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.491327 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.540472 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.542092 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.542099 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.591257 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.592401 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.592447 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.641997 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.642678 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.643065 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.692738 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.694051 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.694069 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.742848 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.743685 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.744553 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.793940 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.794691 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.795085 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.844759 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.845931 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.845947 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.895542 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.896122 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.896530 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.945688 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.946517 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.946562 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:14.996635 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:14.997838 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:14.997858 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.047673 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.048689 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.048704 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.098205 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.099241 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.099286 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.148731 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.149745 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.149756 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.198943 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.200167 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.200172 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.249368 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.250278 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.250363 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.300060 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.301033 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.301253 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.350640 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.351640 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.351720 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.401399 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.402337 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.402515 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.452344 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.453395 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.453453 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.502763 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.503544 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.503557 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.553023 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.554625 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.554666 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.603846 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.605042 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.605063 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.654628 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.655876 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.655893 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.705398 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.706567 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.706577 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.756325 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.757425 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.757480 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.807128 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.808249 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.808308 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.857850 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.859004 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.859071 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.908726 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.909831 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:15.909887 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.959686 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:15.960882 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:15.960896 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.010643 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.011846 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.011863 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.061498 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.062658 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.062673 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.067521 raftMisc.go:35: Réplica 0 estado: mandato:1, idLider:0, estado:2
+155.210.154.194:1756112:44:16.112273 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.113374 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.113388 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.162673 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.163820 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.163853 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.213489 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.214681 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.214697 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.264207 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.265243 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.265331 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.314924 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.316045 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.316077 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.365937 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.367143 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.367159 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.416813 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.418006 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.418021 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.467555 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.468739 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.468763 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.518407 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.519346 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.519437 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.568883 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.570517 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.570519 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.619260 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.620858 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.620899 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.669623 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.671243 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.671258 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.719904 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.720669 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.721039 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.770485 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.771717 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.771725 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.821449 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.822749 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.822766 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.871630 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.872543 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.872803 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.922347 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.923662 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.923675 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:16.972583 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:16.973911 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:16.973928 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.023655 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.024603 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.024782 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.074548 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.075863 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.075879 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.125379 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.126695 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.126714 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.176477 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.177682 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.177702 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.226573 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.228216 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.228227 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.277602 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.278740 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.278757 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.328222 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.329337 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.329369 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.379124 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.380324 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.380375 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.429856 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.430527 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.431002 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.480902 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.481565 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.481974 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.531579 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.532884 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.532908 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.582591 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.583436 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.583519 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.632761 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.634040 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.634112 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.683487 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.684391 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.684680 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.733823 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.735081 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.735116 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.783867 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.785177 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.785178 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.834966 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.836266 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.836266 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.885001 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.886452 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.886454 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.936199 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.937505 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:17.937527 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.986854 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:17.988350 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:17.988375 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.037980 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.038978 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.039755 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.089181 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.090440 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.090483 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.139239 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.140845 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.140885 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.189306 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.190659 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.190679 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.240207 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.241468 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.241471 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.290942 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.292162 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.292186 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.341365 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.342781 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.342788 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.392236 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.393253 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.393344 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.442982 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.443961 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.444107 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.493549 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.494715 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.494755 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.544201 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.545296 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.545306 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.594828 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.596003 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.596025 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.645662 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.646878 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.646887 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.696674 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.697828 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.697836 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.746746 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.748192 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.748234 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.797576 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.798228 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.798688 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.848262 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.849486 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.849500 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.899244 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.900361 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:18.900409 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.949991 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:18.951287 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:18.951321 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.000879 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.002014 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.002029 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.051656 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.052949 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.052957 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.102354 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.103394 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.103411 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.153264 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.154657 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.154665 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.204083 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.205266 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.205278 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.254954 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.255798 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.256133 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.305883 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.307101 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.307127 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.356804 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.358021 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.358037 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.407601 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.408770 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.408787 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.458412 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.459731 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.459746 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.498813 raftMisc.go:82: Réplica 0: (lider) recibo una nueva operación, mandato: 1
+155.210.154.194:1756112:44:19.499859 raftAppendEntries.go:114: Réplica 0: (lider) 1 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.499872 raftAppendEntries.go:114: Réplica 0: (lider) 1 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.509011 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.509855 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.509885 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.559431 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.560977 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.561001 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.610471 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.611689 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.611703 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.661325 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.662600 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.662614 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.712170 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.713411 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.713427 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.763108 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.763822 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.764274 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.813706 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.814933 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.814946 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.864783 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.866101 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.866114 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.915678 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.916913 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.916921 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:19.966408 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:19.967214 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:19.967483 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.017193 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.018358 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.018388 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.067839 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.069024 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.069060 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.118649 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.119971 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.119988 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.169452 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.170639 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.170647 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.220464 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.221648 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.221657 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.271435 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.272105 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.272622 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.322272 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.323385 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.323431 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.373104 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.374181 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.374189 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.423855 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.424897 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.424976 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.474699 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.475665 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.475720 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.525746 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.526914 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.526950 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.576628 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.577775 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.577809 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.627742 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.628854 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.628862 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.678771 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.679885 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.679900 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.729802 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.730470 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.730737 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.779890 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.781247 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.781258 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.830227 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.831588 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.831628 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.881274 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.882378 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.882424 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.932006 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.933330 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:20.933338 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.983091 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:20.984290 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:20.984354 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.033933 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.035224 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.035249 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.084831 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.086475 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.086484 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.135260 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.136472 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.136485 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.185340 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.186974 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.186984 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.235622 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.237127 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.237153 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.286458 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.287712 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.287709 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.337405 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.338663 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.338677 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.388516 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.389745 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.389754 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.439188 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.440413 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.440415 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.489937 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.491222 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.491232 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.540815 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.542043 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.542068 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.591715 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.593034 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.593042 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.642615 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.643859 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.643881 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.693406 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.694382 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.694544 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.744453 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.745158 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.745660 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.795417 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.796677 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.796685 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.845778 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.847310 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.847312 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.896134 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.897685 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.897690 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.946494 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.948025 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:21.948044 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.996590 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:21.997973 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:21.997978 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.047310 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.048672 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.048700 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.098304 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.099690 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.099720 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.148379 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.149963 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.149974 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.198995 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.200179 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.200212 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.249731 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.250505 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.250943 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.300618 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.301881 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.301902 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.351590 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.352822 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.352829 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.402399 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.403346 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.403581 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.453498 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.454847 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.454858 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.503800 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.504570 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.504652 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.553846 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.555459 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.555471 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.604920 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.606237 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.606239 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.656004 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.657243 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.657279 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.706894 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.708199 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.708224 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.757879 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.759174 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.759184 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.808287 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.809845 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.809911 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.828447 raftMisc.go:35: Réplica 0 estado: mandato:1, idLider:0, estado:2
+155.210.154.194:1756112:44:22.859408 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.860809 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.860822 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.909601 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.910684 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:22.910698 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.959886 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:22.961318 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:22.961361 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.010057 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.010830 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.010843 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.060235 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.061108 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.061410 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.110936 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.112162 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.112177 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.161746 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.163060 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.163073 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.212694 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.213935 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.213944 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.262798 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.264130 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.264133 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.313335 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.314610 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.314621 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.364328 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.365526 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.365543 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.414561 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.416094 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.416108 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.465641 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.466914 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.466930 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.516633 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.517615 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.517709 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.567667 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.568313 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.568825 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.618650 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.619861 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.619871 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.669466 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.670763 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.670763 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.720458 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.721774 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.721788 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.770595 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.772000 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.772022 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.821581 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.822658 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.822710 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.872499 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.873778 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.873801 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.922929 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.924098 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.924098 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:23.973694 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:23.974580 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:23.974890 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.024806 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.026031 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.026041 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.075787 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.077005 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.077015 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.126629 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.127843 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.127863 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.177197 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.178195 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.178407 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.228252 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.229291 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.229369 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.279184 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.279865 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.280399 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.330207 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.330874 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.331361 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.380317 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.381694 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.381735 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.431174 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.432243 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.432291 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.481710 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.482516 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.482530 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.531997 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.533370 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.533383 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.582954 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.584157 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.584172 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.633931 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.635043 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.635050 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.684785 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.686079 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.686088 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.735704 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.736950 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.736963 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.786645 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.787317 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.787783 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.837741 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.838862 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.838914 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.888650 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.889708 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.889725 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.939716 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.940958 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:24.940974 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.990451 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:24.991729 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:24.991737 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.041442 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.042762 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.042779 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.091548 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.093164 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.093177 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.141969 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.143612 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.143624 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.192327 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.193867 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.193910 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.243416 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.244211 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.244579 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.294348 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.295885 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.295898 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.344648 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.345413 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.345815 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.395630 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.396803 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.396819 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.445785 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.447303 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.447344 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.495846 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.497213 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.497227 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.546329 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.547658 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.547671 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.596565 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.597817 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.597829 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.646750 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.647883 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.647900 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.697418 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.698370 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.698416 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.747865 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.748799 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.749032 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.798941 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.800230 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.800238 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.849847 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.851165 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.851173 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.900902 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.902049 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:25.902066 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.951551 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:25.952823 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:25.952830 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.001660 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:26.003305 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:26.003326 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.051864 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:26.053391 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.053398 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:26.102306 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:26.103303 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:26.103324 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.153040 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:26.154148 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:26.154163 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.203821 raft.go:120: Réplica 0: envío latido, mandato: 1
+155.210.154.194:1756112:44:26.205078 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 2
+155.210.154.194:1756112:44:26.205084 raftAppendEntries.go:114: Réplica 0: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.194:1756112:44:26.254254 raft.go:93: Réplica 0: finaliza la ejecución
