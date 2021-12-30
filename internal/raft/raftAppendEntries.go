@@ -89,11 +89,13 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 		// Actualizamos nuestro commitIndex
 		if args.LeaderCommit > nr.commitIndex {
 			nr.commitIndex = min(args.LeaderCommit, len(nr.log)-1)
-			nr.comprometerEntradas()
 			nr.logger.Printf("Réplica %d: (seguidor) entrada %d comprometida", nr.yo, nr.commitIndex)
 		}
 		nr.mux.Unlock()
 	}
+
+	// Comprometemos entradas si fuera posible
+	nr.comprometerEntradas()
 
 	var cadenaLog string = ""
 	nr.mux.Lock()
@@ -170,6 +172,9 @@ func (nr *NodoRaft) AppendEntries(timeout time.Duration) {
 
 	// Actualizamos el commitIndex
 	nr.actualizarCommitIndex()
+
+	// Comprometemos entradas en caso de que fuera posible
+	nr.comprometerEntradas()
 }
 
 // Gestión de las respuestas a AppendEntry recibidas de los nodo
@@ -219,7 +224,7 @@ func (nr *NodoRaft) actualizarCommitIndex() {
 
 		// Solo comprometemos entradas de nuestro mandato
 		if nr.log[n].Mandato == nr.currentTerm {
-			total := 0
+			total := 1 // La entrada ya esta en nuestro log
 			for i := 0; i < len(nr.nodos); i++ {
 				if nr.matchIndex[i] >= n {
 					total++
@@ -230,8 +235,7 @@ func (nr *NodoRaft) actualizarCommitIndex() {
 			// La entrada n y todas las anteriores estarán comprometidas
 			if total >= len(nr.nodos)/2+1 {
 				nr.commitIndex = n
-				nr.comprometerEntradas()
-				nr.logger.Printf("Réplica %d: (lider) entrada %d comprometida", nr.yo, nr.commitIndex)
+				//nr.logger.Printf("Réplica %d: (lider) entrada %d comprometida", nr.yo, nr.commitIndex)
 			} else {
 				// Si la primera entrada de ese mandato no se puede comprometer, tampoco
 				// podremos comprometer entradas posteriores
@@ -245,7 +249,19 @@ func (nr *NodoRaft) actualizarCommitIndex() {
 func (nr *NodoRaft) comprometerEntradas() {
 	nr.mux.Lock()
 	for i := nr.lastApplied + 1; i <= nr.commitIndex; i++ {
-		nr.canalAplicar <- AplicaOperacion{i, nr.log[i].Operacion}
+		canalRespuesta := make(chan string)
+		nr.canalAplicar <- AplicaOperacion{canalRespuesta, i, nr.log[i].Operacion}
+		respuesta := <-canalRespuesta
+		nr.logger.Printf("Réplica %d: comprometo la entrada %d", nr.yo, i)
+		// mandar a la rutina que trata al cliente
+		for n, j := range nr.respuestas {
+			if j.indice == i {
+				nr.logger.Printf("Réplica %d: comunico la respuesta de comprometer la entrada %d", nr.yo, i)
+				j.canalRespuesta <- respuesta
+				nr.respuestas = append(nr.respuestas[0:n], nr.respuestas[n+1:]...)
+				break
+			}
+		}
 	}
 	nr.lastApplied = nr.commitIndex
 	nr.mux.Unlock()

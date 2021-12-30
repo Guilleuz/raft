@@ -6,6 +6,7 @@ import (
 	"os"
 	"raft/internal/raft"
 	"runtime"
+	"strings"
 )
 
 func checkError(err error) {
@@ -58,10 +59,39 @@ func main() {
 				nodo, reply.Yo, reply.Mandato, reply.LiderId, reply.EsLider)
 		case 3:
 			// Someter operación al nodo
-			var args interface{} = "Someto por RPC"
+			// Pedimos número de nodo por pantalla
+			fmt.Print("Indique la operación a realizar (0 Lectura, 1 Escritura): ")
+			fmt.Scan(&operacion)
+
+			var args raft.TipoOperacion
+
+			if operacion == 0 {
+				args.Operacion = "leer"
+				args.Valor = ""
+				
+				fmt.Print("Indique la clave a leer: ")
+				var clave string
+				fmt.Scan(&clave)
+				args.Clave = clave
+			} else if operacion == 1 {
+				args.Operacion = "escribir"
+				fmt.Print("Indique la clave y el valor a escribir (formato clave:valor): ")
+				var claveValor string
+				
+				fmt.Scan(&claveValor)
+				args.Clave = strings.Split(claveValor,":")[0]
+				args.Valor = strings.Split(claveValor,":")[1]
+			} else {
+				fmt.Println("Opción no reconocida\n")
+				continue
+			}
+
 			var replyOP raft.SometerOperacionReply
 			err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 			checkError(err)
+			if operacion == 0 {
+				fmt.Printf("Valor leído: %s\n", replyOP.Valor)
+			}
 			fmt.Printf("Resultados someter al nodo %d: indice:%d, mandato:%d, esLider:%t\n\n",
 				nodo, replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
 		default:

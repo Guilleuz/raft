@@ -14,8 +14,6 @@ import (
 	"time"
 )
 
-var almacenamiento map[string]string
-
 //  false deshabilita por completo los logs de depuracion
 // Aseguraros de poner kEnableDebugLogs a false antes de la entrega
 const kEnableDebugLogs = true
@@ -46,19 +44,19 @@ func checkError(err error) {
 // comprometidas, envía un AplicaOperacion, con cada una de ellas, al canal
 // "canalAplicar" (funcion NuevoNodo) de la maquina de estados
 type AplicaOperacion struct {
-	indice    int // en la entrada de registro
-	operacion interface{}
+	canalRespuesta chan string
+	indice         int // en la entrada de registro
+	operacion      TipoOperacion
 }
 
 type Operacion struct {
 	Mandato   int
-	Operacion interface{}
+	Operacion TipoOperacion
 }
 
-type TipoOperacion struct {
-	Operacion string // La operaciones posibles son "leer" y "escribir"
-	Clave     string
-	Valor     string // en el caso de la lectura Valor = ""
+type CommitPendiente struct {
+	canalRespuesta chan string
+	indice         int
 }
 
 // Tipo de dato Go que representa un solo nodo (réplica) de raft
@@ -90,6 +88,8 @@ type NodoRaft struct {
 	canalAplicar  chan AplicaOperacion
 	mensajeLatido chan bool
 	canalStop     chan bool
+
+	respuestas []CommitPendiente
 }
 
 // Función encargada de la gestión del estado de la réplica
@@ -147,7 +147,7 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	nr.canalStop = make(chan bool)
 	nr.votedFor = -1
 	// Inicializamos el log de forma que todas las réplicas tengan una entrada inicial igual
-	nr.log = []Operacion{{0, nil}}
+	nr.log = []Operacion{{0, TipoOperacion{}}}
 
 	nr.estado = SEGUIDOR
 	nr.nextIndex = make([]int, len(nodos))
@@ -182,20 +182,23 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	}
 
 	go nr.gestionEstado()
-	go maquinaDeEstados(canalAplicar)
+	go maquinaDeEstados(nr.canalAplicar, nr.logger)
 	return nr
 }
 
-func maquinaDeEstados(canalAplicar chan AplicaOperacion) {
+func maquinaDeEstados(canalAplicar chan AplicaOperacion, logger *log.Logger) {
+	almacenamiento := make(map[string]string)
 	for {
-		op := <-canalAplicar
-		operacion, ok := op.operacion.(TipoOperacion)
-		if ok {
-			if operacion.Operacion == "escribir" {
-				almacenamiento[operacion.Clave] = operacion.Valor
-			} else if operacion.Operacion == "leer" {
-
-			}
+		aplica := <-canalAplicar
+		if aplica.operacion.Operacion == "escribir" {
+			almacenamiento[aplica.operacion.Clave] = aplica.operacion.Valor
+			aplica.canalRespuesta <- ""
+			logger.Printf("Aplicada la operación escribir %s:%s\n", aplica.operacion.Clave, aplica.operacion.Valor)
+		} else if aplica.operacion.Operacion == "leer" {
+			aplica.canalRespuesta <- almacenamiento[aplica.operacion.Clave]
+			logger.Printf("Aplicada la operación leer %s:%s\n", aplica.operacion.Clave)
+		} else {
+			logger.Println("Operacion no reconocida")
 		}
 	}
 }
