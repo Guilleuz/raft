@@ -26,7 +26,7 @@ func main() {
 
 	for {
 		// Pedimos operacion por pantalla
-		fmt.Println("Seleccione una opción:\n1. Parar Nodo\n2. Estado Nodo\n3. Someter a Nodo")
+		fmt.Println("Seleccione una opción:\n1. Parar Nodo\n2. Estado Nodo\n3. Someter a Nodo\n4. Estado del Log")
 		var operacion int
 		fmt.Scan(&operacion)
 		// Pedimos número de nodo por pantalla
@@ -68,7 +68,7 @@ func main() {
 			if operacion == 0 {
 				args.Operacion = "leer"
 				args.Valor = ""
-				
+
 				fmt.Print("Indique la clave a leer: ")
 				var clave string
 				fmt.Scan(&clave)
@@ -77,10 +77,10 @@ func main() {
 				args.Operacion = "escribir"
 				fmt.Print("Indique la clave y el valor a escribir (formato clave:valor): ")
 				var claveValor string
-				
+
 				fmt.Scan(&claveValor)
-				args.Clave = strings.Split(claveValor,":")[0]
-				args.Valor = strings.Split(claveValor,":")[1]
+				args.Clave = strings.Split(claveValor, ":")[0]
+				args.Valor = strings.Split(claveValor, ":")[1]
 			} else {
 				fmt.Println("Opción no reconocida\n")
 				continue
@@ -94,6 +94,13 @@ func main() {
 			}
 			fmt.Printf("Resultados someter al nodo %d: indice:%d, mandato:%d, esLider:%t\n\n",
 				nodo, replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+		case 4:
+			// Conslutar estado del log del nodo
+			var reply raft.ObtenerEstadoLogReply
+			err = cliente.Call("NodoRaft.ObtenerEstadoLogRPC", struct{}{}, &reply)
+			checkError(err)
+			fmt.Printf("Log del nodo %d: %s\ncommitIndex: %d, lastApplied: %d\n",
+				nodo, reply.Log, reply.CommitIndex, reply.LastApplied)
 		default:
 			fmt.Println("Opción no reconocida\n")
 		}

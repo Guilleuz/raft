@@ -3,7 +3,6 @@ package raft
 import (
 	"net/rpc"
 	"raft/internal/comun/rpctimeout"
-	"strconv"
 	"time"
 )
 
@@ -97,12 +96,7 @@ func (nr *NodoRaft) AppendEntry(args *AppendEntryPeticion, reply *AppendEntryRes
 	// Comprometemos entradas si fuera posible
 	nr.comprometerEntradas()
 
-	var cadenaLog string = ""
-	nr.mux.Lock()
-	for i, entrada := range nr.log {
-		cadenaLog = cadenaLog + strconv.Itoa(i) + ":" + strconv.Itoa(entrada.Mandato) + " "
-	}
-	nr.mux.Unlock()
+	cadenaLog := nr.logToString()
 	nr.logger.Printf("Réplica %d, mi log: %s", nr.yo, cadenaLog)
 	return nil
 }

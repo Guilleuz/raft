@@ -1,0 +1,645 @@
+155.210.154.196:1756312:08:08.907685 raft.go:179: logger initialized
+155.210.154.196:1756312:08:08.907766 raft.go:97: Réplica 2: comienza la ejecución
+155.210.154.196:1756312:08:09.051424 raftEleccion.go:103: Replica 2: peticion voto de 1, he votado a -1, mi log: i0 m0, el del candidato: i0 m0
+155.210.154.196:1756312:08:09.051435 raftEleccion.go:114: Réplica 2: le concedo el voto al candidato 1
+155.210.154.196:1756312:08:09.052066 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.052072 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.052076 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.102683 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.102694 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.102697 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.153876 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.153887 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.153891 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.204696 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.204707 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.204710 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.254810 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.254821 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.254825 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.305898 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.305923 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.305927 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.356442 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.356454 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.356457 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.407504 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.407530 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.407534 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.458446 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.458472 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.458475 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.509549 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.509575 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.509578 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.560463 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.560499 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.560503 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.611497 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.611523 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.611527 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.662459 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.662485 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.662488 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.713276 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.713302 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.713306 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.764098 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.764130 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.764134 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.814732 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.814759 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.814762 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.864294 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.864320 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.864323 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.915430 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.915457 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.915460 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:09.966465 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:09.966491 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:09.966494 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.017268 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.017294 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.017298 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.068182 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.068194 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.068197 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.119486 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.119518 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.119521 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.168946 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.168975 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.168978 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.220536 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.220562 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.220566 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.271543 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.271569 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.271573 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.322506 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.322532 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.322536 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.372888 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.372917 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.372921 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.424084 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.424110 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.424113 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.474286 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.474298 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.474301 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.524376 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.524387 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.524391 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.575260 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.575286 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.575290 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.626360 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.626386 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.626390 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.677328 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.677354 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.677362 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.728398 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.728423 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.728427 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.779409 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.779434 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.779438 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.830085 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.830113 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.830117 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.881192 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.881204 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.881208 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.931333 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.931360 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.931365 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:10.981684 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:10.981710 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:10.981713 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.031719 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.031749 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.031752 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.082760 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.082785 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.082790 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.133708 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.133734 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.133738 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.184495 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.184520 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.184524 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.235597 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.235623 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.235632 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.286439 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.286465 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.286468 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.336884 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.336910 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.336914 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.388205 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.388217 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.388220 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.439032 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.439058 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.439061 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.489328 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.489354 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.489357 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.539526 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.539552 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.539556 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.590712 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.590738 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.590741 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.641122 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.641148 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.641152 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.691531 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.691558 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.691562 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.741802 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.741831 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.741834 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.792123 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.792134 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.792137 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.843203 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.843214 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.843218 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.894136 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.894147 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.894150 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.945261 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.945273 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.945276 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:11.995495 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:11.995523 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:11.995526 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.047212 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.047223 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.047227 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.097486 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.097512 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.097516 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.148264 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.148275 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.148279 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.199381 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.199407 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.199410 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.249912 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.249938 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.249941 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.300386 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.300412 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.300416 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.352240 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.352268 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.352272 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.402282 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.402312 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.402316 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.453321 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.453347 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.453350 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.504210 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.504222 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.504225 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.554893 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.554919 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.554922 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.604945 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.604971 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.604974 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.655940 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.655966 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.655970 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.706733 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.706758 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.706762 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.757414 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.757440 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.757444 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.808567 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.808593 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.808596 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.859616 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.859642 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.859646 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.909735 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.909761 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.909764 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:12.960438 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:12.960469 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:12.960473 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.011462 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.011487 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.011492 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.061869 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.061895 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.061899 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.113564 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.113590 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.113593 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.163667 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.163693 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.163696 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.214902 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.214928 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.214931 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.265137 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.265168 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.265173 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.315711 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.315737 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.315741 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.365675 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.365701 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.365704 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.416256 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.416282 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.416286 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.467075 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.467102 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.467105 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.517842 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.517874 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.517878 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.568328 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.568353 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.568357 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.618819 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.618845 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.618849 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.669956 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.669982 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.669985 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.720064 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.720091 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.720094 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.770677 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.770704 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.770707 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.820355 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.820381 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.820384 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.871426 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.871451 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.871455 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.922344 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.922356 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.922360 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:13.973038 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:13.973063 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:13.973067 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.023687 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.023713 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.023718 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.074901 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.074926 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.074935 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.125145 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.125180 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.125184 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.175334 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.175361 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.175364 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.225890 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.225916 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.225919 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.276833 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.276861 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.276865 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.326975 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.327003 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.327006 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.377683 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.377709 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.377712 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.427752 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.427778 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.427781 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.478399 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.478425 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.478428 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.529740 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.529766 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.529769 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.580907 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.580918 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.580921 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.631946 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.631971 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.631975 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.682876 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.682904 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.682908 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.733738 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.733764 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.733767 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.784729 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.784755 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.784758 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.834820 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.834832 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.834836 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.885154 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.885187 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.885190 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.936005 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.936032 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.936035 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:14.986968 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:14.986994 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:14.986997 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.037264 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.037276 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.037279 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.087325 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.087350 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.087354 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.137776 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.137787 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.137791 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.187778 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.187805 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.187809 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.238853 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.238884 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.238888 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.289837 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.289863 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.289867 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.339594 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.339620 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.339623 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.390928 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.390954 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.390958 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.441881 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.441908 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.441911 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.493035 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.493061 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.493065 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.543212 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.543224 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.543227 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.593663 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.593675 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.593678 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.643594 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.643620 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.643624 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.694645 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.694671 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.694674 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.745616 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.745642 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.745645 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.796530 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.796560 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.796564 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.846897 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.846925 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.846929 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.897289 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.897315 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.897318 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.948211 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.948222 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.948225 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:15.998312 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:15.998338 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:15.998341 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.049139 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.049151 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.049154 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.100216 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.100227 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.100230 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.150533 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.150561 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.150565 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.200885 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.200896 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.200900 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.252250 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.252262 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.252266 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.301740 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.301751 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.301755 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.353362 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.353378 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.353382 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.403755 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.403766 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.403770 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.454692 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.454718 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.454724 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.505667 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.505693 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.505696 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.556772 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.556798 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.556802 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.607577 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.607603 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.607606 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.658515 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.658541 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.658545 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.709752 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.709778 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.709781 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.760025 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.760051 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.760054 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.811261 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.811273 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.811276 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.862197 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.862208 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.862211 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.913167 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.913193 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.913202 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:16.964333 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:16.964360 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:16.964363 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.014654 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.014667 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.014670 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.064735 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.064761 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.064765 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.115115 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.115126 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.115129 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.166558 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.166584 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.166588 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.217440 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.217466 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.217470 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.268623 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.268648 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.268652 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.318900 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.318925 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.318929 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.369221 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.369233 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.369236 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.419534 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.419560 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.419564 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.470246 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.470258 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.470261 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.520868 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.520894 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.520897 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.572706 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.572732 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.572735 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.622921 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.622948 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.622951 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.673866 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.673877 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.673880 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.724347 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.724376 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.724380 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.774845 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.774871 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.774875 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.824347 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.824358 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.824362 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.978456 raftEleccion.go:103: Replica 2: peticion voto de 0, he votado a 1, mi log: i0 m0, el del candidato: i0 m0
+155.210.154.196:1756312:08:17.978482 raftEleccion.go:114: Réplica 2: le concedo el voto al candidato 0
+155.210.154.196:1756312:08:17.979364 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.979385 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:17.979389 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:17.989942 raftAppendEntries.go:53: Réplica 2: AppendEntry de 1, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:17.989968 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 1
+155.210.154.196:1756312:08:17.989974 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.031462 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.031488 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.031493 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.081732 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.081764 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.081768 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.132078 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.132105 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.132108 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.182377 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.182388 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.182391 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.232612 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.232637 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.232641 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.282590 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.282615 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.282619 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.333856 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.333882 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.333885 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.384851 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.384862 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.384865 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.435064 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.435077 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.435081 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.486666 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.486692 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.486696 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.536968 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.536995 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.536998 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.587785 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.587811 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.587814 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.638659 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.638685 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.638695 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.689271 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.689282 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.689286 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.739861 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.739887 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.739890 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 
+155.210.154.196:1756312:08:18.754977 raftMisc.go:38: Réplica 2 estado: mandato:2, idLider:0, estado:0
+155.210.154.196:1756312:08:18.756840 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 1, PrevLogIndex: 0, mandato ultima entrada: 0, PrevLogTerm: 0
+155.210.154.196:1756312:08:18.756862 raftAppendEntries.go:67: Réplica 2: 1 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.756868 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 
+155.210.154.196:1756312:08:18.789285 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 2, PrevLogIndex: 1, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.789311 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.789313 raftAppendEntries.go:91: Réplica 2: (seguidor) entrada 1 comprometida
+155.210.154.196:1756312:08:18.789322 raft.go:196: Aplicada la operación escribir clave:valor
+155.210.154.196:1756312:08:18.789325 raftAppendEntries.go:249: Réplica 2: comprometo la entrada 1
+155.210.154.196:1756312:08:18.789328 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 
+155.210.154.196:1756312:08:18.790532 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 2, PrevLogIndex: 1, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.790537 raftAppendEntries.go:67: Réplica 2: 1 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.790556 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 
+155.210.154.196:1756312:08:18.809782 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 3, PrevLogIndex: 2, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.809808 raftAppendEntries.go:67: Réplica 2: 1 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.809810 raftAppendEntries.go:91: Réplica 2: (seguidor) entrada 2 comprometida
+155.210.154.196:1756312:08:18.809815 raft.go:196: Aplicada la operación escribir clave:valor
+155.210.154.196:1756312:08:18.809818 raftAppendEntries.go:249: Réplica 2: comprometo la entrada 2
+155.210.154.196:1756312:08:18.809821 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 
+155.210.154.196:1756312:08:18.840924 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 4, PrevLogIndex: 3, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.840950 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.840953 raftAppendEntries.go:91: Réplica 2: (seguidor) entrada 3 comprometida
+155.210.154.196:1756312:08:18.840957 raft.go:196: Aplicada la operación escribir clave:valor
+155.210.154.196:1756312:08:18.840960 raftAppendEntries.go:249: Réplica 2: comprometo la entrada 3
+155.210.154.196:1756312:08:18.840963 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 
+155.210.154.196:1756312:08:18.841258 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 4, PrevLogIndex: 3, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.841265 raftAppendEntries.go:67: Réplica 2: 1 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.841270 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 
+155.210.154.196:1756312:08:18.861585 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 5, PrevLogIndex: 4, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.861613 raftAppendEntries.go:67: Réplica 2: 1 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.861615 raftAppendEntries.go:91: Réplica 2: (seguidor) entrada 4 comprometida
+155.210.154.196:1756312:08:18.861620 raft.go:196: Aplicada la operación escribir clave:valor
+155.210.154.196:1756312:08:18.861622 raftAppendEntries.go:249: Réplica 2: comprometo la entrada 4
+155.210.154.196:1756312:08:18.861626 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 5:2 
+155.210.154.196:1756312:08:18.891408 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 6, PrevLogIndex: 5, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.891434 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.891436 raftAppendEntries.go:91: Réplica 2: (seguidor) entrada 5 comprometida
+155.210.154.196:1756312:08:18.891441 raft.go:196: Aplicada la operación escribir clave:valor
+155.210.154.196:1756312:08:18.891444 raftAppendEntries.go:249: Réplica 2: comprometo la entrada 5
+155.210.154.196:1756312:08:18.891454 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 5:2 
+155.210.154.196:1756312:08:18.942129 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 6, PrevLogIndex: 5, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.942140 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.942144 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 5:2 
+155.210.154.196:1756312:08:18.992297 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 6, PrevLogIndex: 5, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:18.992325 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:18.992329 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 5:2 
+155.210.154.196:1756312:08:19.042756 raftAppendEntries.go:53: Réplica 2: AppendEntry de 0, len de mi log: 6, PrevLogIndex: 5, mandato ultima entrada: 2, PrevLogTerm: 2
+155.210.154.196:1756312:08:19.042782 raftAppendEntries.go:67: Réplica 2: 0 entrada(s) de log aceptadas de 0
+155.210.154.196:1756312:08:19.042786 raftAppendEntries.go:100: Réplica 2, mi log: 0:0 1:2 2:2 3:2 4:2 5:2 
+155.210.154.196:1756312:08:19.209841 raft.go:117: Réplica 2: vence el timeout, paso a candidato
+155.210.154.196:1756312:08:19.209871 raft.go:125: Réplica 2: antes del inicio de la eleccion
+155.210.154.196:1756312:08:19.209874 raftEleccion.go:22: Réplica 2: comienzo una elección, mandato: 3
+155.210.154.196:1756312:08:19.210965 raftEleccion.go:139: Réplica 2: (candidato) le pido el voto a 0
+155.210.154.196:1756312:08:19.211013 raftEleccion.go:139: Réplica 2: (candidato) le pido el voto a 1
+155.210.154.196:1756312:08:19.211935 raftEleccion.go:58: Réplica 2: he recibido mayoría, paso a LIDER
+155.210.154.196:1756312:08:19.211947 raft.go:129: Réplica 2: envío latido, mandato: 3
+155.210.154.196:1756312:08:19.212302 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.196:1756312:08:19.212637 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 0
+155.210.154.196:1756312:08:19.262713 raft.go:129: Réplica 2: envío latido, mandato: 3
+155.210.154.196:1756312:08:19.263804 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.196:1756312:08:19.263854 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 0
+155.210.154.196:1756312:08:19.313542 raft.go:129: Réplica 2: envío latido, mandato: 3
+155.210.154.196:1756312:08:19.314616 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.196:1756312:08:19.363905 raft.go:129: Réplica 2: envío latido, mandato: 3
+155.210.154.196:1756312:08:19.365274 raftAppendEntries.go:112: Réplica 2: (lider) 0 entrada(s) de log enviadas a 1
+155.210.154.196:1756312:08:19.414130 raft.go:102: Réplica 2: finaliza la ejecución
