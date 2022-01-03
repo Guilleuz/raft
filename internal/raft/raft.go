@@ -92,48 +92,6 @@ type NodoRaft struct {
 	respuestas []CommitPendiente
 }
 
-// Función encargada de la gestión del estado de la réplica
-func (nr *NodoRaft) gestionEstado() {
-	nr.logger.Printf("Réplica %d: comienza la ejecución\n", nr.yo)
-	rand.Seed(time.Now().UnixNano())
-	for {
-		select {
-		case <-nr.canalStop:
-			nr.logger.Printf("Réplica %d: finaliza la ejecución\n", nr.yo)
-			os.Exit(0)
-		default:
-			nr.mux.Lock()
-			estadoActual := nr.estado
-			nr.mux.Unlock()
-			switch estadoActual {
-			case SEGUIDOR:
-				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
-				select {
-				case <-nr.mensajeLatido:
-					// Si recibimos un mensaje, se reinicia el timeout
-				case <-timeout:
-					// Timeout aleatorio entre 150 y 300ms
-					// Si expira, pasamos a candidato
-					nr.logger.Printf("Réplica %d: vence el timeout, paso a candidato\n", nr.yo)
-					nr.mux.Lock()
-					nr.votedFor = nr.yo
-					nr.estado = CANDIDATO
-					nr.mux.Unlock()
-				}
-			case CANDIDATO:
-				// Comenzamos una elección
-				nr.logger.Printf("Réplica %d: antes del inicio de la eleccion\n", nr.yo)
-				nr.eleccion()
-			case LIDER:
-				// latido 20 veces por segundo (cada 50 ms)
-				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n",
-					nr.yo, nr.currentTerm)
-				nr.AppendEntries(50 * time.Millisecond)
-			}
-		}
-	}
-}
-
 func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoRaft {
 	// Inicializamos el nodo
 	nr := &NodoRaft{}
@@ -186,6 +144,50 @@ func NuevoNodo(nodos []string, yo int, canalAplicar chan AplicaOperacion) *NodoR
 	return nr
 }
 
+// Función encargada de la gestión del estado de la réplica
+func (nr *NodoRaft) gestionEstado() {
+	nr.logger.Printf("Réplica %d: comienza la ejecución\n", nr.yo)
+	rand.Seed(time.Now().UnixNano())
+	for {
+		select {
+		case <-nr.canalStop:
+			nr.logger.Printf("Réplica %d: finaliza la ejecución\n", nr.yo)
+			os.Exit(0)
+		default:
+			nr.mux.Lock()
+			estadoActual := nr.estado
+			nr.mux.Unlock()
+			switch estadoActual {
+			case SEGUIDOR:
+				timeout := time.After(time.Duration(rand.Intn(151)+150) * time.Millisecond)
+				select {
+				case <-nr.mensajeLatido:
+					// Si recibimos un mensaje, se reinicia el timeout
+				case <-timeout:
+					// Timeout aleatorio entre 150 y 300ms
+					// Si expira, pasamos a candidato
+					nr.logger.Printf("Réplica %d: vence el timeout, paso a candidato\n", nr.yo)
+					nr.mux.Lock()
+					nr.votedFor = nr.yo
+					nr.estado = CANDIDATO
+					nr.mux.Unlock()
+				}
+			case CANDIDATO:
+				// Comenzamos una elección
+				nr.logger.Printf("Réplica %d: antes del inicio de la eleccion\n", nr.yo)
+				nr.eleccion()
+			case LIDER:
+				// latido 20 veces por segundo (cada 50 ms)
+				nr.logger.Printf("Réplica %d: envío latido, mandato: %d\n",
+					nr.yo, nr.currentTerm)
+				nr.AppendEntries(50 * time.Millisecond)
+			}
+		}
+	}
+}
+
+// Función encargada de la gestión de la máquina de estados
+// Permite operaciones de lectura y escritura en una tabla hash
 func maquinaDeEstados(canalAplicar chan AplicaOperacion, logger *log.Logger) {
 	almacenamiento := make(map[string]string)
 	for {
@@ -193,7 +195,8 @@ func maquinaDeEstados(canalAplicar chan AplicaOperacion, logger *log.Logger) {
 		if aplica.operacion.Operacion == "escribir" {
 			almacenamiento[aplica.operacion.Clave] = aplica.operacion.Valor
 			aplica.canalRespuesta <- ""
-			logger.Printf("Aplicada la operación escribir %s:%s\n", aplica.operacion.Clave, aplica.operacion.Valor)
+			logger.Printf("Aplicada la operación escribir %s:%s\n",
+				aplica.operacion.Clave, aplica.operacion.Valor)
 		} else if aplica.operacion.Operacion == "leer" {
 			aplica.canalRespuesta <- almacenamiento[aplica.operacion.Clave]
 			logger.Printf("Aplicada la operación leer %s:%s\n", aplica.operacion.Clave)

@@ -66,18 +66,22 @@ func main() {
 			var args raft.TipoOperacion
 
 			if operacion == 0 {
+				// Operación de lectura
 				args.Operacion = "leer"
 				args.Valor = ""
 
+				// Leemos la clave por pantalla
 				fmt.Print("Indique la clave a leer: ")
 				var clave string
 				fmt.Scan(&clave)
 				args.Clave = clave
 			} else if operacion == 1 {
+				// Operación de escritura
 				args.Operacion = "escribir"
 				fmt.Print("Indique la clave y el valor a escribir (formato clave:valor): ")
 				var claveValor string
 
+				// Leemos la clave y el valor por pantalla
 				fmt.Scan(&claveValor)
 				args.Clave = strings.Split(claveValor, ":")[0]
 				args.Valor = strings.Split(claveValor, ":")[1]
@@ -86,6 +90,7 @@ func main() {
 				continue
 			}
 
+			// Sometemos la operación
 			var replyOP raft.SometerOperacionReply
 			err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
 			checkError(err)

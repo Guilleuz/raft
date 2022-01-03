@@ -351,7 +351,7 @@ type CanalResultados struct {
 func (cr *CanalResultados) startDistributedProcesses(
 	replicasMaquinas map[string]string) {
 	listaReplicas := ""
-	for replica, _ := range replicasMaquinas {
+	for replica := range replicasMaquinas {
 		listaReplicas = listaReplicas + " " + replica
 	}
 

@@ -35,6 +35,7 @@ func (nr *NodoRaft) eleccion() {
 	nr.gestionRespuestasVoto(canalVoto, canalMandato)
 }
 
+// Función encargada de gestionar las respuestas a cada petición de voto
 func (nr *NodoRaft) gestionRespuestasVoto(canalVoto chan bool, canalMandato chan int) {
 	votosRecibidos := 1 // Nos votamos a nosotros mismos
 	timeout := time.After(time.Duration(rand.Intn(201)+300) * time.Millisecond)
@@ -103,10 +104,12 @@ func (nr *NodoRaft) PedirVoto(args *ArgsPeticionVoto, reply *RespuestaPeticionVo
 	nr.logger.Printf("Replica %d: peticion voto de %d, he votado a %d, mi log: i%d m%d, el del candidato: i%d m%d\n",
 		nr.yo, args.CandidateId, nr.votedFor, ultimaEntrada, ultimoMandato, args.LastLogIndex, args.LastLogTerm)
 	
-	if (nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm) && (args.LastLogTerm > ultimoMandato ||
-		(args.LastLogTerm == ultimoMandato && args.LastLogIndex >= ultimaEntrada)) {
-		// Si no hemos votado (votedFor = -1), hemos votado al mismo candidato
-		// o el mandato del candidato es mayor, le concedemos el voto
+	if (nr.votedFor == -1 || nr.votedFor == args.CandidateId || args.Term > nr.currentTerm) && 
+		(args.LastLogTerm > ultimoMandato || (args.LastLogTerm == ultimoMandato && args.LastLogIndex >= ultimaEntrada)) {
+		// Si no hemos votado, hemos votado al mismo candidato
+		// o el mandato del candidato es mayor y su log está más avanzado
+		// Le concedemos nuestro voto
+		
 		nr.votedFor = args.CandidateId
 		nr.currentTerm = args.Term
 		nr.estado = SEGUIDOR // Pasamos a seguidor
@@ -148,8 +151,9 @@ func (nr *NodoRaft) enviarPeticionVoto(nodo int, args *ArgsPeticionVoto,
 // Función que gestiona una llamada a PedirVoto, enviando por el canal "canalMandato", el mandato de
 // la réplica a la que se le pidió el voto, y por "canalVoto" un booleano indicando si la réplica le
 // ha concedido o no el voto
-func (nr *NodoRaft) gestionarPeticionVoto(nodo int, canalVoto chan bool, canalMandato chan int,
-	args ArgsPeticionVoto) {
+func (nr *NodoRaft) gestionarPeticionVoto(nodo int, canalVoto chan bool,
+	canalMandato chan int,args ArgsPeticionVoto) {
+	
 	var respuesta *RespuestaPeticionVoto = new(RespuestaPeticionVoto)
 	ok := nr.enviarPeticionVoto(nodo, &args, respuesta)
 	if ok {

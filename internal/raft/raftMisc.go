@@ -103,11 +103,13 @@ type ObtenerEstadoLogReply struct {
 	LastApplied int
 }
 
+// Llamada RPC que implementa la funcionalidad ObtenerEstadoLog
 func (nr *NodoRaft) ObtenerEstadoLogRPC(_ *struct{}, reply *ObtenerEstadoLogReply) error {
 	reply.Log, reply.CommitIndex, reply.LastApplied = nr.ObtenerEstadoLog()
 	return nil
 }
 
+// Devuelve el log de un nodo como string
 func (nr *NodoRaft) logToString() string {
 	var cadenaLog string = ""
 	nr.mux.Lock()

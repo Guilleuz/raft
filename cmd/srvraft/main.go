@@ -41,7 +41,6 @@ func main() {
 	nr := raft.NuevoNodo(nodos, me, make(chan raft.AplicaOperacion, 1000))
 	err = rpc.Register(nr)
 	checkError(err)
-	//rpc.HandleHTTP()
 	fmt.Println("RPC OK")
 
 	l, err := net.Listen("tcp", os.Args[2:][me])
@@ -54,7 +53,5 @@ func main() {
 	fmt.Println("Net Listen OK")
 
 	fmt.Println("Replica escucha en :", me, " de ", os.Args[2:])
-	// TODO cambiar conexiones http por tcp
-	//http.Serve(l, nil)
 	rpc.Accept(l)
 }
