@@ -91,6 +91,121 @@ func TestPrimerasPruebas(t *testing.T) {
 
 }
 
+// --------------------------------------------------------------------------
+// FUNCIONES DE SUBTESTS
+
+// Se pone en marcha una replica
+func (cr *CanalResultados) soloArranqueYparadaTest1(t *testing.T) {
+	t.Skip("SKIPPED soloArranqueYparadaTest1")
+
+	fmt.Println(t.Name(), ".....................")
+
+	// Poner en marcha replicas en remoto
+	cr.startDistributedProcesses(map[string]string{REPLICA1: MAQUINA1})
+
+	// Parar réplicas alamcenamiento en remoto
+	cr.stopDistributedProcesses([]string{REPLICA1})
+
+	fmt.Println(".............", t.Name(), "Superado")
+}
+
+// Primer lider en marcha
+func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
+	t.Skip("SKIPPED ElegirPrimerLiderTest2")
+
+	fmt.Println(t.Name(), ".....................")
+
+	// Poner en marcha  3 réplicas Raft
+	cr.startDistributedProcesses(cr.replicasMaquinas)
+
+	// Se ha elegido lider ?
+	fmt.Printf("Probando lider en curso\n")
+	if cr.pruebaUnLider() == -1 {
+		t.Errorf("No hay líder, o hay más de uno\n")
+	}
+
+	cr.stopDistributedProcesses(cr.replicas)
+
+	fmt.Println(".............", t.Name(), "Superado")
+}
+
+// Fallo de un primer lider y reeleccion de uno nuevo
+func (cr *CanalResultados) FalloAnteriorElegirNuevoLiderTest3(t *testing.T) {
+	t.Skip("SKIPPED FalloAnteriorElegirNuevoLiderTest3")
+
+	fmt.Println(t.Name(), ".....................")
+
+	// Poner en marcha  3 réplicas Raft
+	cr.startDistributedProcesses(cr.replicasMaquinas)
+
+	fmt.Printf("Lider inicial\n")
+	lider := cr.pruebaUnLider()
+
+	// Desconectar lider
+	if lider != -1 {
+		cr.stopDistributedProcesses([]string{cr.replicas[lider]})
+	} else {
+		t.Errorf("No hay líder, o hay más de uno\n")
+	}
+
+	fmt.Printf("Comprobar nuevo lider\n")
+	if cr.pruebaUnLider() == -1 {
+		t.Errorf("No hay un nuevo líder, o hay más de uno\n")
+	}
+
+	// Parar réplicas almacenamiento en remoto
+	cr.stopDistributedProcesses(cr.replicas)
+
+	fmt.Println(".............", t.Name(), "Superado")
+}
+
+// 3 operaciones comprometidas con situacion estable y sin fallos
+func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
+	//t.Skip("SKIPPED tresOperacionesComprometidasEstable")
+	fmt.Println(t.Name(), ".....................")
+
+	// Poner en marcha  3 réplicas Raft
+	cr.startDistributedProcesses(cr.replicasMaquinas)
+
+	lider := cr.pruebaUnLider()
+	if lider != -1 {
+		cliente, err := rpc.Dial("tcp", cr.replicas[lider])
+		checkError(err)
+		// SI cliente nil no superado
+		if cliente == nil {
+			t.Errorf("No se ha podido conectar con el lider\n")
+		}
+
+		var args interface{} = "Someto por RPC"
+		var replyOP raft.SometerOperacionReply
+		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
+		checkError(err)
+		fmt.Printf("Resultados someter 1: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+
+		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
+		checkError(err)
+		fmt.Printf("Resultados someter 2: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+
+		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
+		checkError(err)
+		fmt.Printf("Resultados someter 3: %d, %d, %t\n",
+			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
+
+		if replyOP.Indice != 3 {
+			t.Errorf("No se han registrado las entradas correctamente\n")
+		}
+	} else {
+		t.Errorf("No hay líder, o hay más de uno\n")
+	}
+
+	// Parar réplicas almacenamiento en remoto
+	cr.stopDistributedProcesses(cr.replicas)
+	fmt.Println(".............", t.Name(), "Superado")
+}
+
+
 // TEST primer rango
 func TestAcuerdosConFallos(t *testing.T) { // (m *testing.M) {
 	// <setup code>
@@ -381,120 +496,6 @@ func (cr *CanalResultados) stopDistributedProcesses(replicas []string) {
 			checkError(err)
 		}
 	}
-}
-
-// --------------------------------------------------------------------------
-// FUNCIONES DE SUBTESTS
-
-// Se pone en marcha una replica
-func (cr *CanalResultados) soloArranqueYparadaTest1(t *testing.T) {
-	t.Skip("SKIPPED soloArranqueYparadaTest1")
-
-	fmt.Println(t.Name(), ".....................")
-
-	// Poner en marcha replicas en remoto
-	cr.startDistributedProcesses(map[string]string{REPLICA1: MAQUINA1})
-
-	// Parar réplicas alamcenamiento en remoto
-	cr.stopDistributedProcesses([]string{REPLICA1})
-
-	fmt.Println(".............", t.Name(), "Superado")
-}
-
-// Primer lider en marcha
-func (cr *CanalResultados) ElegirPrimerLiderTest2(t *testing.T) {
-	t.Skip("SKIPPED ElegirPrimerLiderTest2")
-
-	fmt.Println(t.Name(), ".....................")
-
-	// Poner en marcha  3 réplicas Raft
-	cr.startDistributedProcesses(cr.replicasMaquinas)
-
-	// Se ha elegido lider ?
-	fmt.Printf("Probando lider en curso\n")
-	if cr.pruebaUnLider() == -1 {
-		t.Errorf("No hay líder, o hay más de uno\n")
-	}
-
-	cr.stopDistributedProcesses(cr.replicas)
-
-	fmt.Println(".............", t.Name(), "Superado")
-}
-
-// Fallo de un primer lider y reeleccion de uno nuevo
-func (cr *CanalResultados) FalloAnteriorElegirNuevoLiderTest3(t *testing.T) {
-	t.Skip("SKIPPED FalloAnteriorElegirNuevoLiderTest3")
-
-	fmt.Println(t.Name(), ".....................")
-
-	// Poner en marcha  3 réplicas Raft
-	cr.startDistributedProcesses(cr.replicasMaquinas)
-
-	fmt.Printf("Lider inicial\n")
-	lider := cr.pruebaUnLider()
-
-	// Desconectar lider
-	if lider != -1 {
-		cr.stopDistributedProcesses([]string{cr.replicas[lider]})
-	} else {
-		t.Errorf("No hay líder, o hay más de uno\n")
-	}
-
-	fmt.Printf("Comprobar nuevo lider\n")
-	if cr.pruebaUnLider() == -1 {
-		t.Errorf("No hay un nuevo líder, o hay más de uno\n")
-	}
-
-	// Parar réplicas almacenamiento en remoto
-	cr.stopDistributedProcesses(cr.replicas)
-
-	fmt.Println(".............", t.Name(), "Superado")
-}
-
-// 3 operaciones comprometidas con situacion estable y sin fallos
-func (cr *CanalResultados) tresOperacionesComprometidasEstable(t *testing.T) {
-	//t.Skip("SKIPPED tresOperacionesComprometidasEstable")
-	fmt.Println(t.Name(), ".....................")
-
-	// Poner en marcha  3 réplicas Raft
-	cr.startDistributedProcesses(cr.replicasMaquinas)
-
-	lider := cr.pruebaUnLider()
-	if lider != -1 {
-		cliente, err := rpc.Dial("tcp", cr.replicas[lider])
-		checkError(err)
-		// SI cliente nil no superado
-		if cliente == nil {
-			t.Errorf("No se ha podido conectar con el lider\n")
-		}
-
-		var args interface{} = "Someto por RPC"
-		var replyOP raft.SometerOperacionReply
-		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
-		checkError(err)
-		fmt.Printf("Resultados someter 1: %d, %d, %t\n",
-			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
-
-		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
-		checkError(err)
-		fmt.Printf("Resultados someter 2: %d, %d, %t\n",
-			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
-
-		err = cliente.Call("NodoRaft.SometerOperacionRPC", &args, &replyOP)
-		checkError(err)
-		fmt.Printf("Resultados someter 3: %d, %d, %t\n",
-			replyOP.Indice, replyOP.Mandato, replyOP.EsLider)
-
-		if replyOP.Indice != 3 {
-			t.Errorf("No se han registrado las entradas correctamente\n")
-		}
-	} else {
-		t.Errorf("No hay líder, o hay más de uno\n")
-	}
-
-	// Parar réplicas almacenamiento en remoto
-	cr.stopDistributedProcesses(cr.replicas)
-	fmt.Println(".............", t.Name(), "Superado")
 }
 
 // --------------------------------------------------------------------------
