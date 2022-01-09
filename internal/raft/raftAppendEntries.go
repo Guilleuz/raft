@@ -260,12 +260,14 @@ func (nr *NodoRaft) comprometerEntradas() {
 		respuesta := <-canalRespuesta
 		nr.logger.Printf("Réplica %d: comprometo la entrada %d", nr.yo, i)
 		// mandar a la rutina que trata al cliente
-		for n, j := range nr.respuestas {
-			if j.indice == i {
-				nr.logger.Printf("Réplica %d: comunico la respuesta de comprometer la entrada %d", nr.yo, i)
-				j.canalRespuesta <- respuesta
-				nr.respuestas = append(nr.respuestas[0:n], nr.respuestas[n+1:]...)
-				break
+		if nr.estado == LIDER {
+			for n, j := range nr.respuestas {
+				if j.indice == i {
+					nr.logger.Printf("Réplica %d: comunico la respuesta de comprometer la entrada %d", nr.yo, i)
+					j.canalRespuesta <- respuesta
+					nr.respuestas = append(nr.respuestas[0:n], nr.respuestas[n+1:]...)
+					break
+				}
 			}
 		}
 	}
